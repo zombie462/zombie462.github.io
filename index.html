@@ -115,14 +115,14 @@
 						loadScript(['https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js','../axios.js'])
 						.then(
 							()=>Promise.all([
-								loadText([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io/ui.html`,'./ui.html']).then((result)=>{window.GAME_UI=result;}),
+								loadText([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io@master/ui.html`,'./ui.html']).then((result)=>{window.GAME_UI=result;}),
 							])
 						),
 					])
-					.then(()=>loadScript([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io/mosiyuan.js`,'./mosiyuan.js'])),
+					.then(()=>loadScript([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io@master/mosiyuan.js`,'./mosiyuan.js'])),
 					loadCSS(['https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css','../normalize.css']),
 					loadCSS(['https://cdn.jsdelivr.net/gh/LMOliver/lmoliver.github.io@master/default.min.css','../default.css']),
-					loadCSS([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io/mosiyuan.css`,'./mosiyuan.css']),
+					loadCSS([`https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io@master/mosiyuan.css`,'./mosiyuan.css']),
 				])
 				.then(()=>{
 					document.getElementById('global').innerHTML='';
