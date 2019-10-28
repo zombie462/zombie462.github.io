@@ -27,7 +27,7 @@
 				<div>
 					<span>{{`您已膜拜${pn(Math.floor(moValue))}次`}}</span>
 				</div>
-				<button @click="moYukai(1)" style="color:red"
+				<button @click="moSiyuan(1)" style="color:red"
 					v-html="`膜拜${YUKAI}${moDelta!==1?`${pn(moDelta)}次`:''}`"></button>
 				<span v-if="bookEffect>0">{{`${pn(bookEffect)}点击/秒`}}</span>
 			</div>
@@ -612,10 +612,10 @@
 								<td>
 									<span v-if="typeof db.targetID==='undefined'">{{`○等待中`}}</span>
 									<span v-else-if="typeof enemy.current[db.targetID]!=='undefined'">
-										▷{{getName(enemy.current[db.targetID].dna)}}
+										?{{getName(enemy.current[db.targetID].dna)}}
 									</span>
 									<span v-else>
-										▷???
+										????
 									</span>
 								</td>
 								<template v-if="db.cooldown>0">
