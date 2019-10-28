@@ -145,7 +145,7 @@
 		if(!Number.isSafeInteger(num)||num<0||num>=s.length){return pn(num);}
 		return s[num];
 	}
-	const YUKAI='<span class="siyuan">Yukai</span>';
+	const YUKAI='<span class="yukai">Yukai</span>';
 	const DAILY_MESSAGES=[
 		`你强归你强，${YUKAI}比你强！`,
 		`你可以按住<code>Enter</code>来快速点击一个按钮。`,
