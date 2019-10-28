@@ -145,7 +145,7 @@
 		if(!Number.isSafeInteger(num)||num<0||num>=s.length){return pn(num);}
 		return s[num];
 	}
-	const YUKAI='<span class="yukai">Yukai</span>';
+	const YUKAI='<span class="siyuan">Yukai</span>';
 	const DAILY_MESSAGES=[
 		`你强归你强，${YUKAI}比你强！`,
 		`你可以按住<code>Enter</code>来快速点击一个按钮。`,
@@ -173,7 +173,7 @@
 		`<img src="./daily2.png">`,
 		`<img src="./daily3.png">`,
 		`<img src="./daily4.png">`,
-		`Orz${YUKAI} 就来 <a href="https://orzyukai.com">orzyukai.com</a>！`,
+		`Orz${YUKAI} 就来 <a href="https://orzsiyuan.com">orzsiyuan.com</a>！`,
 		`你知道吗？${YUKAI}几乎每天都会上几次<a href="http://lydsy.online">http://lydsy.online</a>！(难道网址中的<code>dsy</code>是天意？)`,
 		`追寻真理的各种花费与你本轮尝试次数有关。`,
 		`追寻真理时重置会将当前成功轮数也清空！`,
@@ -188,7 +188,7 @@
 		`${YUKAI}:“哪场 ** CF 连样例解释都没有？”`,
 		`${YUKAI}:“tourist 能过，那窝肯定也能过！”`,
 		`萌新三连:“窝怎么立直了 nya？胡是什么 nya，可以跳过吗？自摸是不是每巡都有的，好烦 nya！”`,
-		`Markdown: [https://orzyukai.com](https://lmoliver.github.io/moSiyuan)`,
+		`Markdown: [https://orzsiyuan.com](https://lmoliver.github.io/mosiyuan)`,
 		`如果出现了难以对付的敌人，你可以<strong>召唤拯救</strong>扫清他们。`,
 		`祝贺 ${YUKAI} ZJOI2019 Day2 40+40+50=130分 && 触发女装 Flag !`,
 		`2019-08-21 ${YUKAI} 被阿祭`,
@@ -361,7 +361,7 @@
 		['今年是第几届 IOI？31','30','35','36','37'],
 		['第 12 届 IOI 是 ____ 年在北京举办的：2000','1984','1995','1999'],
 
-		['以下链接中指向 OJ 的有：luogu.org；uoj.ac；loj.ac；acm.hdu.edu.cn；lydsy.com；joyoi.cn；vijos.org','github.com','lmoliver.github.io/blog','lmoliver.github.io/moSiyuan','slay.one','generals.io','agar.io','lydsy.online','orzyukai.com','lmoliver.github.io/jrneoj','m2oj.com','zhihu.com/?target=uoj.ac'],
+		['以下链接中指向 OJ 的有：luogu.org；uoj.ac；loj.ac；acm.hdu.edu.cn；lydsy.com；joyoi.cn；vijos.org','github.com','lmoliver.github.io/blog','lmoliver.github.io/mosiyuan','slay.one','generals.io','agar.io','lydsy.online','orzsiyuan.com','lmoliver.github.io/jrneoj','m2oj.com','zhihu.com/?target=uoj.ac'],
 		['如果使用 Kuai 排进行有序序列合并，归并排序的时间复杂度是：O(n(log n)^2)','O(n log n)','O(log n)','O((log n)^2)'],
 	].map(a=>makeProblem(...a));
 
@@ -1689,7 +1689,7 @@
 						.style.backgroundColor
 					=`rgba(0,0,0,${1-x})`;
 				},
-				moYukai(r=1){
+				moSiyuan(r=1){
 					this.moCount+=r;
 					this.moValue+=r*this.moDelta;
 				},
@@ -2645,7 +2645,7 @@
 				},
 			},
 			data:function(){
-				let save=localStorage.getItem('game-moSiyuan-save');
+				let save=localStorage.getItem('game-mosiyuan-save');
 				let data={};
 				if(save){
 					try{
@@ -2675,7 +2675,7 @@
 						for(let resName in SAVE_ITEMS){
 							save[resName]=this[resName];
 						}
-						localStorage.setItem('game-moSiyuan-save',encode.call(this,save));
+						localStorage.setItem('game-mosiyuan-save',encode.call(this,save));
 					}
 					setTimeout(saveSave,20);
 				};
@@ -2697,7 +2697,7 @@
 								return obj;
 							}
 							console.log(
-								`膜拜 %cY%cukai%c 要真诚!\n%chttps://orzyukai.com/`,
+								`膜拜 %cY%ukai%c 要真诚!\n%chttps://orzsiyuan.com/`,
 								`color:black;font-weight:bold;`,
 								`color:red;font-weight:bold;`,
 								'',
@@ -2706,7 +2706,7 @@
 							clearTimeout(saveSave);
 							this.$set(this,'debugging',true);
 							setTimeout(()=>{
-								window.location.href='./YukaiAK.png';
+								window.location.href='./SiyuanAK.png';
 							},5000);
 							return undefined;
 						},
@@ -2716,4 +2716,5 @@
 			},
 		});
 	}();
+
 }
