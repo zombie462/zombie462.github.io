@@ -2,4 +2,4 @@
 
 膜拜 Yukai！
 
-[https://zombie462.github.io/](https://zombie462.github.io/index.html)
+[https://zombie462.github.io/moyukai](https://zombie462.github.io/moyukai/index.html)
