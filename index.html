@@ -36,7 +36,7 @@
 					qaq.innerHTML=`Loading <code>${url.split('/').slice(-1)[0]}</code>...`;
 					let element=document.getElementById('global');
 					element.appendChild(qaq);
-					return {
+					return { 
 						get text(){
 							return qaq.innerHTML;
 						},
