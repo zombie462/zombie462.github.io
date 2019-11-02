@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Loading... - Dark Wild
+		</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="./HElib.js"></script>
+		<script src="./darkwild_server.js"></script>
+		<link rel="stylesheet" type="text/css" href="./darkwild.css">
+	</head>
+	<body>
+		<div id="app" >
+			<h1 id="game_title">{{getText('game_title')}}</h1>
+			<div id="game_body">
+				<div class="div_col">
+					<ul id="reponse">
+						<li v-for="msg in messages" v-if="msgShow(msg)" :style="getStyle(msg)">{{praseMessage(msg)}}</li>
+					</ul>
+					<div @keydown.stop="/* just stop it */">
+						<input type="text" id="send_message" maxlength="20000" v-model.trim="inputMessage" @keydown.enter.stop="sendMessage"/>
+					</div>
+				</div>
+				<div class="div_col">
+					<h3 id="action_title">{{getText('action_title')}}</h3>
+					<div id="player">
+						<div id="name_container" class="container">
+							<span id="name_tag">{{getText('name_tag')}}</span>
+							<span id="name">{{name}}</span>
+						</div>
+						<div id="health_container" class="container">
+							<span id="health_tag">{{getText('health_tag')}}</span>
+							<span id="health">{{health}}</span>
+						</div>
+						<div id="coin_container" class="container">
+							<span id="coin_tag">{{getText('coin_tag')}}</span>
+							<span id="coin">{{coin}}</span>
+						</div>
+					</div>
+					<div id="move_actions">
+						<div>
+							<button class="btn action" id="respawn" @click="sendSimpleAction('respawn')" :disabled="!enable.respawn">{{getText('respawn')}}</button>
+						</div>
+						<div>
+							<button class="btn action" id="go_forward" @click="sendSimpleAction('go_forward')" :disabled="!enable.go_forward">{{getText('go_forward')}}</button>
+							<button class="btn action" id="go_backward" @click="sendSimpleAction('go_backward')" :disabled="!enable.go_backward">{{getText('go_backward')}}</button>
+							<button class="btn action" id="turn_left" @click="sendSimpleAction('turn_left')" :disabled="!enable.turn_left">{{getText('turn_left')}}</button>
+							<button class="btn action" id="turn_right" @click="sendSimpleAction('turn_right')" :disabled="!enable.turn_right">{{getText('turn_right')}}</button>
+						</div>
+						<div>
+							<button class="btn action" id="touch_front" @click="sendSimpleAction('touch_front')" :disabled="!enable.touch_front">{{getText('touch_front')}}</button>
+							<button class="btn action" id="touch_ground" @click="sendSimpleAction('touch_ground')" :disabled="!enable.touch_ground">{{getText('touch_ground')}}</button>
+							<button class="btn action" id="attack" @click="sendSimpleAction('attack')" :disabled="!enable.attack">{{getText('attack')}}</button>
+						</div>
+						<button onclick="inv=setInterval(/*(f=>()=>{for(let i=0;i<1;i++)f();})*/(()=>{var b=document.getElementsByClassName('btn action');b[Math.floor(Math.random()*b.length)].click()}));">?</button>
+						<button onclick="clearInterval(inv)">!</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./connector.js"></script>
+		<script src="./darkwild_client.js"></script>
+	</body>
+</html>
