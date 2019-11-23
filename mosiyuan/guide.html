@@ -1,0 +1,1648 @@
+<h1>对膜$S\color{red}iyuan$的深入探究</h1>
+<h3>Update：基本更新完毕。</h3>
+<h2>荒野</h2>
+<blockquote><p>	曾经，有一个高度发达的文明在这个星球上度过了它最为繁荣的时代。在那时，人们相信Siyuan是最强的神，也是这个星球的科技、魔法与信仰三大学科体系高度发展的原因。</p>
+<p>	然而好景不长，曾被人们认为亘古不变的真理在一次失控的魔法实验之后支离破碎。科技与魔法的支柱轰然倒塌，毁灭席卷了整个星球。</p>
+<p>	高楼变为废墟，法阵化作黄土，雕像碎成砂砾，但Siyuan并未抛弃这个文明——因为信仰仍在。</p>
+</blockquote>
+<h3>值：</h3>
+<p><strong>膜拜次数：</strong></p>
+<p>你总共膜拜$S\color{red}iyuan$的次数。</p>
+<p>内码：<code>moValue</code></p>
+<p><strong>点击次数：</strong></p>
+<p>你或者系统点击膜拜$S\color{red}iyuan$按钮的次数。</p>
+<p>内码：<code>moCount</code></p>
+<p><strong>膜拜权重：</strong></p>
+<p>你或者系统每次点击膜拜$S\color{red}iyuan$按钮增加的膜拜数。</p>
+<p>内码：<code>moDelta</code></p>
+<p><strong>每秒膜拜次数：</strong></p>
+<p>系统每秒自动帮你点击膜拜$S\color{red}iyuan$按钮的次数。</p>
+<p>内码：<code>bookEffect</code></p>
+<p><strong>真诚膜拜等级：</strong></p>
+<p>你的真诚膜拜等级。</p>
+<p>内码：<code>advancedMoLevel</code></p>
+<p><strong>信徒数：</strong></p>
+<p>你的信徒个数。</p>
+<p>内码：<code>moers</code></p>
+<p><strong>教堂数：</strong></p>
+<p>你的教堂个数。</p>
+<p>内码：<code>churchs</code></p>
+<p><strong>信仰数：</strong></p>
+<p>你已经将膜拜次数转化成的信仰数。</p>
+<p>内码：<code>XY</code></p>
+<p><strong>转化信仰数：</strong></p>
+<p>你的全部膜拜次数可以转化成这么多的信仰。</p>
+<p>内码：<code>XYEarn</code></p>
+<p><strong>经书数：</strong></p>
+<p>你的经书数量。</p>
+<p>内码：<code>books</code></p>
+<p><strong>传教等级：</strong></p>
+<p>你的传教等级。</p>
+<p>内码：<code>spLevel</code></p>
+<p><strong>探索遗迹次数：</strong></p>
+<p>你探索遗迹的次数。</p>
+<p>内码：<code>temple</code></p>
+<p><strong>巨石效果</strong></p>
+<p>你的巨石技术以及巨石数量产生的额外效果。</p>
+<p>内码：<code>hugeStoneEffectFactor</code></p>
+<h3>按钮：</h3>
+<p><strong>膜拜$S\color{red}iyuan$：</strong></p>
+<p>效果：</p>
+<pre><code>moCount+=1
+moValue+=moDelta
+</code></pre>
+<p>花费：</p>
+<pre><code>无
+</code></pre>
+<p>激活条件：</p>
+<pre><code>无
+</code></pre>
+<p><strong>真诚膜拜：</strong></p>
+<p>效果：</p>
+<pre><code>advancedMoLevel+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：floor(10*pow(1+0.2/(churchs+1)+0.1/sqrt(mysteryLevel+1),advancedMoLevel))
+</code></pre>
+<p>膜拜次数：$\lfloor 10 \times (1+0.2\div(churchs+1)+0.1\div\sqrt{mysteryLevel}+1))^{advancedMoLevel}\rfloor$</p>
+<p>激活条件：</p>
+<pre><code>moCount&gt;=10
+“最大”按钮：tech.xuanxue&gt;=1
+</code></pre>
+<p><strong>信徒：</strong></p>
+<p>效果：</p>
+<pre><code>moers+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：ceil(max(100*pow(1.6,moers/((1+spLevel*0.15)*tidyEffectFactor))*pow(1e3/(1e3+XY*(1+natureLevel)),2.5),pow(moers,2)))
+</code></pre>
+<p>膜拜次数：$\lceil(\max(100\times 1.6^{moers/((1+splevel\times 0.15)\times tidyEffectFactor)}\times (10^3\div(10^3+XY\times (1+natureLevel)))^{2.5},mores^2))\rceil$</p>
+<p>激活条件：</p>
+<pre><code>advancedMoLevel&gt;=10
+“最大”按钮：tech.xuanxue&gt;=2
+</code></pre>
+<p><strong>教堂：</strong></p>
+<p>效果：</p>
+<pre><code>churchs+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>信徒：ceil(5+pow(churchs,1.1+0.1/(1+hugeStoneEffectFactor)))
+</code></pre>
+<p>信徒：$\lceil 5+churchs^{1.1+0.1\div(1+hugeStoneEffectFactor)}\rceil$</p>
+<p>激活条件：</p>
+<pre><code>advancedMoLevel&gt;=20
+“最大”按钮：tech.xuanxue&gt;=6
+</code></pre>
+<p><strong>转化信仰：</strong></p>
+<p>效果：</p>
+<pre><code>XY+=XYearn
+</code></pre>
+<p>花费：</p>
+<pre><code>所有的膜拜次数
+</code></pre>
+<p>激活条件：</p>
+<pre><code>churchs&gt;=5
+</code></pre>
+<p><strong>经书：</strong></p>
+<p>效果：</p>
+<pre><code>books+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>信仰：100*pow(1.15,books/(1+knowledgeBook/2))
+</code></pre>
+<p>信仰：$100\times 1.15^{books\div (1+knowledgeBook\div 2)}$</p>
+<p>激活条件：</p>
+<pre><code>books&gt;=0 || XY&gt;=100
+“最大”按钮：tech.xuanxue&gt;=1
+</code></pre>
+<p><strong>传教：</strong></p>
+<p>效果：</p>
+<pre><code>若成功：spLevel+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>经书：ceil(pow(1.6,spLevel)*10)
+</code></pre>
+<p>经书：$\lceil 1.6^{spLevel}\times 10\rceil$</p>
+<p>激活条件：</p>
+<pre><code>books&gt;0 || 正在传教 || spLevel&gt;0
+</code></pre>
+<p><strong>探索遗迹：</strong></p>
+<p>效果：</p>
+<pre><code>temple+=1
+</code></pre>
+<p>花费：</p>
+<pre><code>信仰：pow(2,pow(1.8,temple))*5e6
+</code></pre>
+<p>经书：$2^{1.8^{temple}}\times 5\times10^6$</p>
+<p>激活条件：</p>
+<pre><code>信息出现：spLevel&gt;0
+按钮可见：moers&gt;=100+temple*10
+</code></pre>
+<h3>计算：</h3>
+<pre><code>bookEffect = min(moCount/1000,1)+floor(books*1.2*pow(1+mysteryLevel,1.5))
+</code></pre>
+<p> $\min(moCound\div 1000,1)+\lfloor books\times 1.2\times (1+mysteryLevel)^{1.5}\rfloor$</p>
+<pre><code>moDelta = ceil((1+advancedMoLevel)*(1+moers)*(1+wisdomLevel)*devotionInductionFactor)
+</code></pre>
+<p>$\lceil(1+advancedMoLevel)\times(1+moers)\times(1+wisdomLevel)\times devotionInductionFactor$</p>
+<pre><code>XYEarn = moValue/2000*churchs*(1+wisdomLevel)*(1+tech.focus/4)
+</code></pre>
+<p>$movalue\div 2000\times churchs\times(1+wisdomLevel)\times(1+tech.focus\div 4)$</p>
+<pre><code>hugeStoneEffectFactor = (1+hugeStone)*sqrt(1+tech.hugeStoneBuilding)
+</code></pre>
+<p>$(1+hugeStone)\times \sqrt{1+tech.hugeStoneBuilding}$</p>
+<h3>传教：</h3>
+<p>你必须连续回答对若干个问题才能传教成功，否则传教将失败。</p>
+<p>每次传教需要的问题数：</p>
+<pre><code>spLevel*3+5
+</code></pre>
+<p>所有传教问题及答案一览：</p>
+<pre><code>NOI 机试使用的操作系统是：Linux
+Linux 中为文件改名使用的命令是：mv &lt;旧文件名&gt; &lt;新文件名&gt;
+在 Linux 中返回上一级目录使用的命令是：cd ..
+在 Linux 中删除当前目录下的 test 目录的命令是：rm -r test
+当前目录下有一个编译好的可执行文件 a.out，执行它使用的命令是：./a.out
+使用高级语言编写的程序称之为：源程序
+在 NOI Linux 系统中可以用来调试程序的程序是：gdb
+在 Linux 系统中，文件夹中的文件可以与该文件夹同名吗：可以
+Linux 系统中杀死名为 test 的后台进程的命令是：killall test
+Linux 系统中可以查看隐藏文件的命令是：ls -a
+Linux 系统中编译 C 程序的编译器是：gcc
+Linux 系统中编译 Pascal 程序的编译器是：fpc
+Linux 系统中编译 C++程序的编译器是：g++
+Linux 系统中，将当前目录下的文件名打印到 tmp 文件中的命令是：ls &gt;tmp
+Linux 系统中，测量当前目录下程序 test 运行时间的命令是：time ./test
+vim 编辑器中，强制退出不保存修改应当输入：:q!
+vim 编辑器中，强制退出并保存修改可输入以下三种命令之一：:wq、ZZ、:x
+vim 编辑器中，定位到文件中第 12 行应当输入：:12
+vim 编辑器中，在文件中查找字符串“12”应当输入：/12
+使用 gcc 编译 C 程序时，生成调试信息的命令行选项是：-g
+使用 gcc 编译 C 程序时，生成所有警告信息的命令行选项是：-Wall
+使用 gcc 编译 C 程序时，只编译生成目标文件的命令行选项是：-c
+使用 gcc 编译 C 程序时，指定输出文件名的命令行选项是：-o
+如果 C 程序中使用了 math.h 中的函数，在编译时需要加入选项：-lm
+Linux 系统中具有最高权限的用户是：root
+在 Linux 的各个虚拟控制台间切换的快捷键有：Ctrl+Alt+F1、Ctrl+Alt+F2、Ctrl+Alt+F3、Ctrl+Alt+F4、Ctrl+Alt+F5、Ctrl+Alt+F6
+在 NOI Linux 中，从字符控制台切换回桌面环境使用的快捷键是：Ctrl+Alt+F7
+在 NOI Linux 中默认使用的 Shell 是：bash
+在 Linux 中查看当前系统中的进程使用的命令是：ps
+在 Linux 中查看进程的 CPU 利用率使用的命令是：ps
+如果自己的程序进入死循环，应当如何终止：Ctrl+C
+可执行文件 a.out 从标准输入读取数据。现有一组输入数据保存在 1.in 中，使用这个测试数据文件测试自己的程序的命令是：./a.out &lt;1.in
+可执行文件 prog_1 向标准输出输出运行结果。将输出结果保存到 1.out 文件中使用的命令是：./prog_1 &gt;1.out
+使用 Reset 键强行重新启动计算机可能会对系统造成的后果是：文件系统损坏、膜拜Siyuan存档损坏
+在 Linux 系统中，用于查看文件的大小的命令是：ls -l
+(上略)其中，可以执行的文件是：foobar.sh
+评测系统中对程序源文件大小的限制是：小于 100KB
+如无另行说明，评测系统中对程序使用内存的限制是：以硬件资源为限
+Linux 下的换行字符为：\\n
+终止一个失去响应的进程（$pid 代表进程号）的命令是：kill $pid
+Linux 中是否区分文件和目录名称的大小写：是
+选手在 NOI 机试过程中是否禁止使用网络：是
+为程序 my.c 创建一个备份 myc.bak 时，使用的命令是：cp my.c myc.bak
+调试程序的方法有：单步调试、使用 print 类语句打印中间结果、读源代码
+在考试过程中，如果出现系统死机或者崩溃现象，选手应当采取的措施是：举手示意监考人员处理
+提交的答案程序中如果包含 NOI 考试明确禁止使用的代码，后果是：本题成绩以 0 分计算
+对评测结果有疑义，需要申请复评，则：提出书面申请；经领队、科学委员会主席签字确认后，提交至评测人员
+复评成绩较原始成绩有变化，则：以复评成绩为准
+Pascal 中 integer 和 long integer 类型的长度和编译选项是否有关系：有关系
+NOI 考试对 C++ 语言模板的使用有限制吗？没有
+NOI 考试对 PASCAL 语言的使用有限制吗？有
+名为 FILE 的文件和名为 File 的文件在 Linux 系统中被认为是：不同的文件
+目录 DIRECT 和目录 Direct 在 Linux 系统中被认为是：不同的目录
+在 NOI 正式考试中如何登录自己的比赛用机：使用考前工作人员下发的账户及密码
+如果考试分多日进行，那么选手的考试账户和口令：由工作人员在每场考试开始前下发
+考试结束后，应如何处理密码条：保存好密码条，用于复测
+选手答案文件保存的目录是：选手目录下和考题名称符合的目录
+选手答案的文件名要求是：和试卷的题目摘要中所示文件名一致
+选手答案的文件名大小写错误，成绩会怎样：0 分
+选手提交的源代码文件名是否有特殊要求：源程序文件名由试题名称缩写加后缀构成，试题名称缩写及后缀一律使用小写
+在 NOI 考试中，Pascal 源文件的扩展名规定为：pas
+在 NOI 考试中，C 源文件的扩展名规定为：c
+在 NOI 考试中，C++ 源文件的扩展名规定为：cpp
+发现鼠标或其他硬件设备有问题，选手可以：请工作人员更换
+对试题理解有问题，选手可以：举手求助
+考试结束后选手需要：迅速离开
+复评结束后是否还能提交复评申请：不能
+测试点时间限制的含义是指：题目允许程序运行所占用的用户时间总和的上限值
+什么情况下选手可以申请延长考试时间：机器出现故障，并由工作人员确认和记录
+考试中选手自行重新启动机器，能否获得加时？不能
+草稿纸用完了，如何处理：举手向监考人员求助
+水喝完了，如何处理：举手向监考人员再要一瓶
+Siyuan觉得考试太简单，能提前离开吗？能
+Siyuan离开考场后，发现有个题可以吊打标算，能回去再改吗？不能
+考试中机器突然没响应了，如何处理？举手向监考人员求助
+考试中发现登录名和密码的单子丢了，如何处理？向工作人员求助
+复评的时候忘记登录名和密码了，如何处理？向工作人员求助
+在监考人员宣布 NOI 机试开始之前，是否允许选手登录系统和翻阅试卷？否
+在 NOI 上机考试中，是否允许选手私自重新启动计算机？否
+在 NOI 系列考试中，如果由于文件名不正确导致被判 0 分，提出复评请求，会被接受吗？不会
+在 NOI 系列考试中，如果由于文件目录名不正确导致被判 0 分，提出复评请求，会被接受吗？不会
+在 NOI 系列考试中，如果由于文件保存路径不正确导致被判 0 分，提出复评请求，会被接受吗？不会
+选手可以不使用 IDE 环境编辑程序源代码吗？可以
+选手回答填空题，提交的答案中可以包含引号吗？不可以
+选手程序在某测试点上的运行时间仅比时限多 0.005 秒，算不算超时？算
+在 NOI 上机考试中，允许选手使用的编程语言包括：C、C++、Pascal
+NOI 比赛的题目类型有：非交互式程序题、交互式程序题、答案提交题
+选手比赛中提交的有效文件类型有：答案文件、源程序
+选手提交的程序不得进行的操作包括：试图访问网络、使用 fork 或其它线程/进程生成函数、打开或创建题目规定的输入/输出文件之外的其它文件、运行其它程序
+以修改过的程序或答案为依据的申诉是否会被受理：否
+没有复测结果支持的申诉是否会被受理：否
+超过申诉时间的申诉是否会被受理：否
+对评测结果中的超时有异议，且复测结果的运行时间与题目时间限制之差小于题目时间限制5％的申诉是否会被受理：否
+遇到下列哪些情况可以向工作人员申请加时补偿：计算机硬件故障、操作系统死机
+考试时若遇到计算机硬件故障或操作系统死机，应如何处理？举手向工作人员求助
+选手进入考场可以携带的物品是：笔、手表
+选手进入考场不可以携带的物品是：纸、U 盘、手机
+竞赛组织者将在竞赛场地为选手提供的物品是：草稿纸、饮用水、食品
+一个完整的计算机系统应包括：硬件系统、软件系统
+目前微型计算机中采用的逻辑组件是：大规模集成电路、超大规模集成电路
+软件与程序的区别是：软件是程序以及开发、使用和维护所需要的所有文档的总称；程序是软件的一部分
+IT 表示：信息技术
+计算机中央处理器简称为：CPU
+计算机内存储器的作用是：用来存放当前 CPU 正在使用的程序和数据
+用来全面管理计算机硬件和软件资源的软件叫：操作系统
+LAN 是指：局域网
+在微机中，bit 的中文含义是：二进制位
+计算机所能辨认的最小信息单位是：位
+ASCII 的含义是：美国信息交换标准代码,国际基础字符集二代
+在计算机术语中经常用 RAM 表示：随机存取存储器
+RAM 存储器在断电后，其中的数据会变化吗？会
+ROM 存储器在断电后，其中的数据会变化吗？不会
+现代计算机所应用的存储程序原理是谁提出的？冯·诺依曼
+计算机内所有的信息都是以什么形式表示的？二进制数码
+计算机直接识别和执行的语言是：机器语言
+Linux 是一个 ____ 的操作系统，意思是源码可以免费获得：开源
+NOI 的中文意思是：全国信息学奥林匹克竞赛
+字长为 32bit 的计算机,表示它能作为一个整体进行传送的数据长度可为几个字节？4
+一个字节由相邻的 ____ 个二进制位组成：8
+二进制数 10 化为十进制数是：2
+与十六进制数（AB）等值的二进数是：10101011
+Linux 中查看当前路径使用的命令是：pwd
+在 Linux 下建立目录使用的命令是：mkdir
+NOI 比赛中提供的 Pascal IDE 环境除了 GUIDE 之外，还有：Lazarus
+NOI 比赛中提供的 C++ IDE 环境除了 GUIDE 之外，还有：Anjuta
+NOI 比赛中提供的编程工具除了 GUIDE、Lazarus、Anjuta 等 IDE 环境之外，还可以使用的编程工具有：Vi 、Gedit
+NOI 比赛每场上机考试的比赛时间是 ____ 小时：5
+首届 NOI 是 ____ 年举办的：1984
+今年是第几届 NOI？36
+今年是第几届 IOI？31
+第 12 届 IOI 是 ____ 年在北京举办的：2000
+以下链接中指向 OJ 的有：luogu.org；uoj.ac；loj.ac；acm.hdu.edu.cn；lydsy.com；joyoi.cn；vijos.org
+如果使用 Kuai 排进行有序序列合并，归并排序的时间复杂度是：O(n(log n)^2)
+</code></pre>
+<h2>遗迹</h2>
+<blockquote><p>	过去的事物深埋于地下，而且数量稀少，发掘它们需要坚定的信仰。尽管道路艰辛，但这是前进所必须的代价。文明不进即退，而这残存的文明已经无路可退。</p>
+<p>	在遗迹中，人们惊喜地发现了向Siyuan祈求水晶的途径。拥有了水晶，两扇大门便随着遗迹的探索徐徐开启……</p>
+</blockquote>
+<h3>遗迹大门：</h3>
+<p><strong>解锁条件：</strong></p>
+<pre><code>temple&gt;0
+
+</code></pre>
+<h4>值：</h4>
+<p><strong>水晶数：</strong></p>
+<p>你将膜拜数转化成的水晶数量。</p>
+<p>内码：<code>crystal</code></p>
+<p><strong>智慧等级：</strong></p>
+<p>你的智慧等级。</p>
+<p>内码：<code>wisdomLevel</code></p>
+<p><strong>奥秘等级：</strong></p>
+<p>你的奥秘等级。</p>
+<p>内码：<code>mysteryLevel</code></p>
+<p><strong>本质等级：</strong></p>
+<p>你的本质等级。</p>
+<p>内码：<code>natureLevel</code></p>
+<h4>按钮：</h4>
+<p><strong>祈求恩赐：</strong></p>
+<p>效果：</p>
+<pre><code>crystal+=1+7*min(tech.optics,5)
+
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：pow(1.6,crystal/temple/(1+truthLevel))*1e10/pow(XY,1/3)
+
+</code></pre>
+<p>膜拜次数：$1.6^{crystal\div temple\div(1+truthLevel)}\times10^{10}\div \sqrt[3]{XY}$</p>
+<p>激活条件：</p>
+<pre><code>解锁遗迹大门
+“最大”按钮：tech.xuanxue&gt;=2
+
+</code></pre>
+<p><strong>智慧：</strong></p>
+<p>效果：</p>
+<pre><code>wisdomLevel+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：ceil(pow(wisdomLevel/(1+truthLevel)+1.5,2)/(1+altar/3))
+
+</code></pre>
+<p>水晶：$\lceil(wisdomLevel\div(1+truthLevel)+1.5)^2\div(1+altar\div3)\rceil$</p>
+<p>激活条件：</p>
+<pre><code>wisdomLevel&gt;0 || crystal&gt;0
+“最大”按钮：tech.xuanxue&gt;=5
+
+</code></pre>
+<p><strong>奥秘：</strong></p>
+<p>效果：</p>
+<pre><code>mysteryLevel+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：ceil(pow(mysteryLevel/(1+truthLevel)+4.5,3)/wisdomLevel/(1+magician/3))
+
+</code></pre>
+<p>水晶：$\lceil(mysteryLevel\div(1+truthLevel)+4.5)^3\div wisdomLevel\div(1+magician\div3)\rceil$</p>
+<p>激活条件：</p>
+<pre><code>temple&gt;=2 &amp;&amp; (mysteryLevel&gt;0 || wisdomLevel&gt;=1)
+“最大”按钮：tech.xuanxue&gt;=6
+
+</code></pre>
+<p><strong>本质：</strong></p>
+<p>效果：</p>
+<pre><code>natureLevel+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：ceil(pow(natureLevel/(1+truthLevel)+4.5,3)/mysteryLevel/(1+scientist/3))
+
+</code></pre>
+<p>水晶：$\lceil(natureLevel\div(1+truthLevel)+4.5)^3\div mysteryLevel\div(1+scientist\div3)\rceil$</p>
+<p>激活条件：</p>
+<pre><code>temple&gt;=3 &amp;&amp; (natureLevel&gt;0 || mysteryLevel&gt;=1)
+“最大”按钮：tech.xuanxue&gt;=7
+
+</code></pre>
+<h3>朝圣地：</h3>
+<p><strong>解锁条件：</strong></p>
+<pre><code>wisdomLevel&gt;=5
+
+</code></pre>
+<h4>值：</h4>
+<p><strong>宝石数：</strong></p>
+<p>你将水晶数转化成的宝石数量。</p>
+<p>内码：<code>gem</code></p>
+<p><strong>神坛数：</strong></p>
+<p>你的神坛数量。</p>
+<p>内码：<code>altar</code></p>
+<p><strong>神学数：</strong></p>
+<p>你的神学数量。</p>
+<p>内码：<code>theology</code></p>
+<p><strong>宝石转化率：</strong></p>
+<p>你的水晶可以转化成的宝石数。</p>
+<p>内码：<code>makeGemEarn</code></p>
+<p><strong>神学产生速率：</strong></p>
+<p>你的神坛每秒产生的神学数。</p>
+<p>内码：<code>theologyPerSec</code></p>
+<h4>按钮：</h4>
+<p><strong>雕琢：</strong></p>
+<p>效果：</p>
+<pre><code>gem+=makeGemEarn
+
+</code></pre>
+<p>花费：</p>
+<pre><code>所有的水晶数
+
+</code></pre>
+<p>激活条件：</p>
+<pre><code>解锁朝圣地
+
+</code></pre>
+<p><strong>神坛：</strong></p>
+<p>效果：</p>
+<pre><code>altar+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>宝石：16*pow(1.5,altar)
+
+</code></pre>
+<p>宝石：$16\times1.5^{altar}$</p>
+<p>激活条件：</p>
+<pre><code>gem&gt;0 || altar&gt;0
+
+</code></pre>
+<p><strong>巨石：</strong></p>
+<p>效果：</p>
+<pre><code>altar+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>信仰：1e18*pow(2.5,hugeStone)*pow(0.97,tech.hugeStoneBuilding)
+
+</code></pre>
+<p>信仰：$10^{18}\times 2.5^{hugeStone}\times 0.97^{tech.hugeStoneBuilding}$</p>
+<p>激活条件：</p>
+<pre><code>tech.hugeStoneBuilding&gt;0
+
+</code></pre>
+<h4>计算：</h4>
+<pre><code>makeGemEarn = max(0,floor(crystal/3*(wisdomLevel/6)-gem*0.6))
+
+</code></pre>
+<p>$\max(0,\lfloor crystal\div3\times(wisdomLevel\div6)-gem\times0.6\rfloor)$</p>
+<pre><code>theologyPerSec = max(0,sqrt(moDelta*gem)-(1+theology)/altar)/1e4*(1+tech.glasses)
+
+</code></pre>
+<p>$\max(0,\sqrt{moDelta\times gem}-(1+theology)\div altar)\div10^5\times(1+tech.glasses)$</p>
+<h3>炼金区：</h3>
+<p><strong>解锁条件：</strong></p>
+<pre><code>mysteryLevel&gt;=5
+
+</code></pre>
+<h4>值：</h4>
+<p><strong>魔法石数：</strong></p>
+<p>你将水晶数转化成的魔法石数量。</p>
+<p>内码：<code>magicStone</code></p>
+<p><strong>魔法师数：</strong></p>
+<p>你的魔法师数量。</p>
+<p>内码：<code>magician</code></p>
+<p><strong>魔力数：</strong></p>
+<p>你的魔力数量。</p>
+<p>内码：<code>magic</code></p>
+<p><strong>魔法石转化率：</strong></p>
+<p>你的水晶可以转化成的魔法石数。</p>
+<p>内码：<code>makeMagicStoneEarn</code></p>
+<p><strong>魔力产生速率：</strong></p>
+<p>你的魔法师每秒产生的魔力数。</p>
+<p>内码：<code>magicRate</code></p>
+<p><strong>魔法石消耗速率：</strong></p>
+<p>你的魔法石每秒消耗的数量。</p>
+<p>内码：<code>magicCostPerSec</code></p>
+<p><strong>法阵效果：</strong></p>
+<p>你的法阵技术以及法阵数量产生的额外效果。</p>
+<p>内码：<code>fazhenEffectFactor</code></p>
+<h4>按钮：</h4>
+<p><strong>赋能：</strong></p>
+<p>效果：</p>
+<pre><code>magicStone+=makeMagicStoneEarn
+
+</code></pre>
+<p>花费：</p>
+<pre><code>所有的水晶数
+
+</code></pre>
+<p>激活条件：</p>
+<pre><code>解锁炼金区
+
+</code></pre>
+<p><strong>魔法师：</strong></p>
+<p>效果：</p>
+<pre><code>magician+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔法石：16*pow(1.5,magician)
+
+</code></pre>
+<p>魔法石：$16\times1.5^{magician}$</p>
+<p>激活条件：</p>
+<pre><code>magicStone&gt;0 || magician&gt;0
+
+</code></pre>
+<p><strong>法阵：</strong></p>
+<p>效果：</p>
+<pre><code>fazhen+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>巨石：3*pow(fazhen+1,2)
+
+</code></pre>
+<p>巨石：$3\times (fazhen+1)^2$</p>
+<p>激活条件：</p>
+<pre><code>tech.fazhenBuilding&gt;0
+
+</code></pre>
+<h4>计算：</h4>
+<pre><code>fazhenEffectFactor = (1+fazhen)*sqrt(1+tech.fazhenBuilding)
+
+</code></pre>
+<p>$(1+fazhen)\times\sqrt{1+tech.fazhenBuilding}$</p>
+<pre><code>magicCostPerSec = max(0.01,magicStone/5e2)*sqrt(magician)/fazhenEffectFactor
+
+</code></pre>
+<p>$\max(0.01,magicStone\div500)\times\sqrt{magician}\div fazhenEffectFactor$</p>
+<pre><code>magicRate = 5*magician*(1+tech.magnifier/4)*fazhenEffectFactor
+
+</code></pre>
+<p>$5\times magician\times(1+tech.magnifier\div4)\times fazhenEffectFactor $</p>
+<h3>实验室：</h3>
+<p><strong>解锁条件：</strong></p>
+<pre><code>natureLevel&gt;=5
+
+</code></pre>
+<h4>值：</h4>
+<p><strong>透镜数：</strong></p>
+<p>你将水晶数转化成的透镜数量。</p>
+<p>内码：<code>len</code></p>
+<p><strong>科学家数：</strong></p>
+<p>你的科学家数量。</p>
+<p>内码：<code>scientist</code></p>
+<p><strong>研究数：</strong></p>
+<p>你的研究数量。</p>
+<p>内码：<code>science</code></p>
+<p><strong>透镜转化率：</strong></p>
+<p>你的水晶可以转化成的透镜数。</p>
+<p>内码：<code>makeLenEarn</code></p>
+<p><strong>研究产生速率：</strong></p>
+<p>你的科学家每秒产生的研究数。</p>
+<p>内码：<code>sciencePerSec</code></p>
+<p><strong>研究上限：</strong></p>
+<p>你的研究值无法超过这个上限。</p>
+<p>内码：<code>scienceLimit</code></p>
+<h4>按钮：</h4>
+<p><strong>打磨：</strong></p>
+<p>效果：</p>
+<pre><code>len+=makeLenEarn
+
+</code></pre>
+<p>花费：</p>
+<pre><code>所有的水晶数
+
+</code></pre>
+<p>激活条件：</p>
+<pre><code>解锁实验室
+
+</code></pre>
+<p><strong>科学家：</strong></p>
+<p>效果：</p>
+<pre><code>scientist+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>透镜：16*pow(1.5,scientist)
+
+</code></pre>
+<p>宝石：$16\times1.5^{scientist}$</p>
+<p>激活条件：</p>
+<pre><code>len&gt;0 || scientist&gt;0
+
+</code></pre>
+<p><strong>知识之书：</strong></p>
+<p>效果：</p>
+<pre><code>knowledgeBook+=1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：2+knowledgeBook
+
+</code></pre>
+<p>信仰：$2+knowledgeBook$</p>
+<p>激活条件：</p>
+<pre><code>tech.blessing&gt;0
+
+</code></pre>
+<h4>计算：</h4>
+<pre><code>makeLenEarn = max(0,floor(crystal/3*(natureLevel/6)-len*0.6))
+
+</code></pre>
+<p>$\max(0,\lfloor crystal\div3\times(natureLevel\div6)-len\times0.6)$</p>
+<pre><code>sciencePerSec = max(0,sqrt(len*scientist)/2)*sqrt(1+tech.glasses)*(1+sqrt(tech.pscience)/4)
+
+</code></pre>
+<p>$\max(0,\sqrt{len\times scientist}\div 2)\times\sqrt{1+tech.glasses}\times (1+\sqrt{tech.pscience}\div 4)$</p>
+<pre><code>scienceLimit = 50*pow(scientist,2)*(1+tech.glasses)*(1+sqrt(tech.pscience)/4)
+
+</code></pre>
+<h2>城镇</h2>
+<blockquote><p>	在遗迹中的发现与收获振奋了信徒们。愚昧逐渐远离，新的知识填充了信徒们的内心。</p>
+<p>	但新的挑战也已来临：天灾人祸随时可能发生。只有居安思危，稳妥前行，才能防止在灾难发生时遭到重创。</p>
+</blockquote>
+<p><strong>解锁条件：</strong></p>
+<pre><code>(temple&gt;=5 &amp;&amp; altar&gt;=5 &amp;&amp; magician&gt;=5 &amp;&amp; scientist&gt;=5) || truthLevel&gt;0
+
+</code></pre>
+<h3>真理之路：</h3>
+<p>探索真理时，对于每个阶段系统将随机出$3$个数，分别表示宝石、魔法石和透镜的个数。你需要用交互的形式来猜出这$3$个数。</p>
+<p>你需要连续完成若干个阶段来达成对整个真理的探索。</p>
+<h4>花费：</h4>
+<pre><code>truthUpgradeAttemptFactor = max(1,pow(3.5,truthUpgradeAttempt-attempts+1))
+//attempts 表示该等级真理在没有加罚的情况下可以尝试的次数
+
+</code></pre>
+<p>$\max(1,3.5^{truthUpgradeAttempt-attempts+1})$</p>
+<pre><code>神学花费 = gemChosen*pow(6,truthLevel)*16*truthUpgradeAttemptFactor/(1+tech.spellWater/20)
+//gemChosen 表示你选择的宝石数
+
+</code></pre>
+<p>$gemChosen\times 6^{truthLevel}\times 16\times truthUpgradeAttemptFactor \div(1+tech.spellWater\div 20)$</p>
+<pre><code>魔力花费 = magicStoneChosen*pow(6,truthLevel)*36*truthUpgradeAttemptFactor/(1+tech.spellWater/16)
+//magicStoneChosen 表示你选择的魔法石数
+
+</code></pre>
+<p>$magicStoneChosen\times 6^{truthLevel}\times 36\times truthUpgradeAttemptFactor\div(1+tech.spellWater\div16)$</p>
+<pre><code>研究花费 = lenChosen*pow(6,truthLevel)*49*truthUpgradeAttemptFactor/(1+tech.spellWater/8)
+
+</code></pre>
+<p>$lenChosen\times 6^{truthLevel}\times 49\times truthUpgradeAttemptFactor\div(1+tech.spellWater\div8)$</p>
+<pre><code>水晶花费 = ceil(truthUpgradeAttemptFactor*pow(2.5,truthLevel)*(gemChosen+magicStoneChosen+lenChosen)*(2/(3+sqrt(tech.dunai)))*pow(0.8,knowledgeBook))
+
+</code></pre>
+<p>$\lceil truthUpgradeAttemptFactor\times 2.5^{truthLevel}\times (gemChosen+magicstoneChosen+lenChosen)\times$</p>
+<p>$(2\div(3+\sqrt{tech.dunai}))\times 0.8^{knowledgeBook}\rceil$</p>
+<h4>真理 <code>I</code>：</h4>
+<p><strong>源码：</strong></p>
+<pre><code class='language-javascript' lang='javascript'>stages:2,
+attempts:5,
+minCost:10,
+maxCost:50,
+dark:false,
+fog:false,
+gen(){
+	return {
+		x:Math.floor(this.random(&#39;truthUpgrade&#39;)*41+10),
+		y:Math.floor(this.random(&#39;truthUpgrade&#39;)*41+10),
+		z:Math.floor(this.random(&#39;truthUpgrade&#39;)*41+10),
+	};
+},
+dis(x,y,z,tx,ty,tz){
+	return Math.abs(x-tx)+Math.abs(y-ty)+Math.abs(z-tz);
+},
+message(res){
+	return `差距:{res}`;
+},
+</code></pre>
+<p>总阶段：$2$</p>
+<p>每阶段不加罚可尝试次数：$5$</p>
+<p>最小值/最大值：$10/50$</p>
+<p>交互方式：系统会返回每种物资与标准的差的绝对值之和。</p>
+<p>解决方式：</p>
+<pre><code>分别尝试4次，三种物资分别为：
+10/10/10; 50/10/10; 10/50/10; 10/10/50
+记答案分别为：
+ans1, ans2, ans3, ans4
+则三种物资的标准值为：
+30-(ans2-ans1)/2
+30-(ans3-ans1)/2
+30-(ans4-ans1)/2
+
+</code></pre>
+<h4>真理 <code>II</code>：</h4>
+<p><strong>源码：</strong></p>
+<pre><code class='language-javascript' lang='javascript'>stages:3,
+attempts:5,
+minCost:50,
+maxCost:100,
+dark:false,
+fog:false,
+gen(){
+	return {
+		x:Math.floor(this.random(&#39;truthUpgrade&#39;)*51+50),
+		y:Math.floor(this.random(&#39;truthUpgrade&#39;)*51+50),
+		z:Math.floor(this.random(&#39;truthUpgrade&#39;)*51+50),
+	};
+},
+dis(x,y,z,tx,ty,tz){
+	return Math.round(Math.sqrt((x-tx)**2+(y-ty)**2+(z-tz)**2));
+},
+message(res){
+	return `距离:{res}`;
+},
+</code></pre>
+<p>总阶段：$3$</p>
+<p>每阶段不加罚可尝试次数：$5$</p>
+<p>最小值/最大值：$50/100$</p>
+<p>交互方式：将你的答案和标准答案看作空间直角坐标系内一个点，系统会返回这两点间的距离（向下取整）。</p>
+<p>解决方式：</p>
+<pre><code>分别尝试3~4次，记录答案。
+3重循环枚举答案，记录误差最小的一个答案。
+填入此答案即可。
+
+</code></pre>
+<h4>真理 <code>III</code>：</h4>
+<p><strong>源码：</strong></p>
+<pre><code class='language-javascript' lang='javascript'>stages:3,
+attempts:18,
+minCost:100,
+maxCost:160,
+gen(){
+	return {
+		x:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+100),
+		y:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+100),
+		z:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+100),
+	};
+},
+dis(x,y,z,tx,ty,tz){
+	let c=0;
+	if(x&gt;tx){c++;}
+	if(y&gt;ty){c++;}
+	if(z&gt;tz){c++;}
+	return c;
+},
+message(res){
+	return `{res}种材料过多`;
+},
+</code></pre>
+<p>总阶段：$3$</p>
+<p>每阶段不加罚可尝试次数：$18$</p>
+<p>最小值/最大值：$100/160$</p>
+<p>交互方式：系统将返回你的答案中有多少个超出标准值。</p>
+<p>解决方式：</p>
+<pre><code>分3次操作，每一次只动一个资源。
+用二分找出分界点，此分界点就是这个资源的答案。
+注意已经找到答案的资源不要再去动它，就让它放在答案的位置。
+
+</code></pre>
+<h4>真理 <code>IV</code>：</h4>
+<p><strong>源码：</strong></p>
+<pre><code class='language-javascript' lang='javascript'>stages:4,
+attempts:9,
+minCost:160,
+maxCost:220,
+dark:false,
+fog:false,
+gen(){
+	return {
+		x:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+160),
+		y:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+160),
+		z:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+160),
+	};
+},
+dis(x,y,z,tx,ty,tz){
+	let dx=Math.abs(x-tx);
+	let dy=Math.abs(y-ty);
+	let dz=Math.abs(z-tz);
+	return 1+(dx^dy^dz)%9;
+},
+message(res){
+	return `相位:{res}`;
+},
+</code></pre>
+<p>总阶段：$4$</p>
+<p>每阶段不加罚可尝试次数：$9$</p>
+<p>最小值/最大值：$160/220$</p>
+<p>交互方式：系统会返回每种物资与标准的差的绝对值的异或和，再对$9$取模加上$1$。</p>
+<p>解决方式：</p>
+<pre><code>知道交互方式以后，直接暴力枚举即可。
+
+</code></pre>
+<h4>真理 <code>V</code>：</h4>
+<p><strong>源码</strong></p>
+<pre><code class='language-javascript' lang='javascript'>stages:4,
+attempts:15,
+minCost:220,
+maxCost:280,
+dark:false,
+fog:false,
+gen(){
+	return {
+		x:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+220),
+		y:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+220),
+		z:Math.floor(this.random(&#39;truthUpgrade&#39;)*61+220),
+	};
+},
+
+dis(x,y,z,tx,ty,tz){
+	let dx=Math.abs(x-tx);
+	let dy=Math.abs(y-ty);
+	let dz=Math.abs(z-tz);
+	let md=Math.max(dx,dy,dz);
+	let res=0;
+	if(dx===md){res|=1;}
+	if(dy===md){res|=2;}
+	if(dz===md){res|=4;}
+	return res;
+},
+message(res){
+	let dd=[];
+	if(res&amp;1){dd.push(&#39;宝石&#39;);}
+	if(res&amp;2){dd.push(&#39;魔法石&#39;);}
+	if(res&amp;4){dd.push(&#39;透镜&#39;);}
+	if(dd.length===3){
+      		return &#39;所有差距相同&#39;;
+	}else{
+		return &#39;{dd.join(&#39;,&#39;)}差距最大&#39;;
+	}
+},
+</code></pre>
+<p>总阶段：$4$</p>
+<p>每阶段不加罚可尝试次数：$15$</p>
+<p>最小值/最大值：$220/280$</p>
+<p>交互方式：系统会返回你选择的物资中哪些是与标准差距最大的。若差距相同，则返回<code>所有差距相同</code>。</p>
+<p>解决方式：</p>
+<pre><code>可用玄学数学方法解决，较为繁琐。如果实在解不出可以通过不断导入导出存档来进行枚举。
+
+</code></pre>
+<h3>技术：</h3>
+<h4>真理<code>I</code>：</h4>
+<p><strong>光学：</strong></p>
+<blockquote><p>水晶的获取使光学成为最先被发展的科学学科。</p>
+</blockquote>
+<p>内码：<code>tech.optics</code></p>
+<p>前置技术：</p>
+<pre><code>无
+
+</code></pre>
+<p>花费：</p>
+<pre><code>透镜：(pow(lv,2)+1)*50
+研究：(pow(lv,3)+1)*50
+
+</code></pre>
+<p>透镜：$(lv^2+1)\times 50$</p>
+<p>研究：$(lv^3+1)\times 50$</p>
+<p>主要影响的方面：</p>
+<pre><code>“祈求恩赐”的花费
+
+</code></pre>
+<p><strong>聚焦：</strong></p>
+<blockquote><p>用水晶打磨成镜片，利用阳光增幅信仰获取。</p>
+</blockquote>
+<p>内码：<code>tech.focus</code></p>
+<p>前置技术：</p>
+<pre><code>光学 Level.1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：(pow(lv,2)+1)*100
+
+</code></pre>
+<p>水晶：$(lv^2+1)\times 100$</p>
+<p>主要影响的值：</p>
+<pre><code>XYEarn
+
+</code></pre>
+<p><strong>放大镜：</strong></p>
+<blockquote><p>让你的魔法师不用超凡的眼力也能弄清魔法石内部的魔力结构。</p>
+</blockquote>
+<p>内码：<code>tech.magnifier</code></p>
+<p>前置技术：</p>
+<pre><code>光学 Level.2
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：(pow(lv,1.5)+1)*75
+
+</code></pre>
+<p>水晶：$(lv^{1.5}+1)\times 75$</p>
+<p>主要影响的值：</p>
+<pre><code>magicRate
+
+</code></pre>
+<p><strong>眼镜：</strong></p>
+<blockquote><p>黑色的框架配上镜片，足以使老龄科学家与神学家看得更清楚。</p>
+</blockquote>
+<p>内码：<code>tech.glasses</code></p>
+<p>前置技术：</p>
+<pre><code>光学 Level.3
+
+</code></pre>
+<p>花费：</p>
+<pre><code>透镜：ceil(pow(lv+1,1.5)*10)
+研究：ceil(pow(lv+1,2)*1000)
+魔力：ceil(pow(1.5,lv))
+
+</code></pre>
+<p>透镜：$\lceil (lv+1)^{1.5}\times 10\rceil$</p>
+<p>研究：$\lceil (lv+1)^2\times 1000\rceil$</p>
+<p>魔力：$\lceil 1.5^{lv}\rceil$</p>
+<p>主要影响的值：</p>
+<pre><code>sciencePerSec, scienceLimit, theologyPerSec
+
+</code></pre>
+<p><strong>玄学：</strong></p>
+<blockquote><p>经过她手里的随机事件便受她掌控，但没被她看到的呢？玄学便是为了探究这个问题而生。</p>
+</blockquote>
+<p>内码：<code>tech.xuanxue</code></p>
+<p>前置技术：</p>
+<pre><code>无
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：pow(lv+1,2.5)*10
+魔法石：pow(lv+1,3)*10
+
+</code></pre>
+<p>水晶：$(lv+1)^{2.5}\times 10$</p>
+<p>魔法石：$(lv+1)^{3}\times 10$</p>
+<p>主要影响的方面：</p>
+<pre><code>“最大”按钮是否出现
+
+</code></pre>
+<p><strong>毒奶：</strong></p>
+<blockquote><p>通过反向毒奶可以减少实验时不该产生的误差，进而减少水晶消耗。</p>
+</blockquote>
+<p>内码：<code>tech.dunai</code></p>
+<p>前置技术：</p>
+<pre><code>玄学 Level.3
+
+</code></pre>
+<p>花费：</p>
+<pre><code>神学：2333+(pow(1.5,lv)-1)*8666
+魔力：pow(1.5,lv)*6666
+
+</code></pre>
+<p>神学：$2333+(1.5^{lv}-1)\times 8666$</p>
+<p>魔力：$1.5^{lv}\times 6666$</p>
+<p>主要影响的方面：</p>
+<pre><code>探索真理时水晶花费
+
+</code></pre>
+<p><strong>整洁：</strong></p>
+<blockquote><p>洗个澡，把衣服穿戴整齐，往往运气会更好！效果与真诚膜拜等级的质因数分解中 2 的数量有关。</p>
+</blockquote>
+<p>内码：<code>tech.tidy</code></p>
+<p>前置技术：</p>
+<pre><code>玄学 Level.4
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：50*(lv+1)**2
+
+</code></pre>
+<p>水晶：$50\times(lv+1)^2$</p>
+<p>主要影响的方面：</p>
+<pre><code>通过影响tidyEffectFactor来影响信徒花费
+
+</code></pre>
+<p>额外计算：</p>
+<pre><code class='language-javascript' lang='javascript'>tidyEffectFactor(){
+	if(this.advancedMoLevel&lt;=0){return 1;}
+	let lowbit=this.advancedMoLevel&amp;-this.advancedMoLevel;
+	let x=Math.log2(lowbit);
+	return 1+Math.max(x-10/this.tech.tidy,0);
+},
+</code></pre>
+<p><strong>法术：</strong></p>
+<blockquote><p>使用不了法术，还能称之为魔法吗？</p>
+</blockquote>
+<p>内码：<code>tech.spell</code></p>
+<p>前置技术：</p>
+<pre><code>无
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔法石：500*(lv+1)
+魔力：2.5**lv *500/3
+
+</code></pre>
+<p>魔法石：$500\times(lv+1)$</p>
+<p>魔力：$2.5^{lv}\times 500\div 3$</p>
+<p><strong>流水术：</strong></p>
+<blockquote><p>江河湖海，皆在掌控。</p>
+</blockquote>
+<p>内码：<code>tech.spellWater</code></p>
+<p>前置技术：</p>
+<pre><code>法术 Level.2
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔力：pow(3.5,lv)*100
+
+</code></pre>
+<p>魔力：$3.5^{lv}\times 100$</p>
+<p>主要影响的方面：</p>
+<pre><code>探索真理时神学、魔力、研究花费
+
+</code></pre>
+<p><strong>虔诚感应：</strong></p>
+<blockquote><p>一束玄妙的魔力丝通向天空，让她知道你正在认真地膜拜她。</p>
+</blockquote>
+<p>内码：<code>tech.devotionInduction</code></p>
+<p>前置技术：</p>
+<pre><code>聚焦 Level.1
+法术 Level.4
+
+</code></pre>
+<p>花费：</p>
+<pre><code>神学：pow(2,lv)*1000
+魔力：pow(lv+1,3)*1000
+
+</code></pre>
+<p>神学：$2^{lv}\times 1000$</p>
+<p>魔力：$(lv+1)^3\times 1000$</p>
+<p>主要影响的方面：</p>
+<pre><code>虔诚感应系统
+
+</code></pre>
+<h4>真理<code>II</code>：</h4>
+<p><strong>科普：</strong></p>
+<blockquote><p>用一些不科学的小东西反而能唤起孩子们对科学的好奇。</p>
+</blockquote>
+<p>内码：<code>tech.pscience</code></p>
+<p>前置技术：</p>
+<pre><code>无
+
+</code></pre>
+<p>花费：</p>
+<pre><code>宝石：30*pow(lv+1,2.2)*pow(1.2,lv/25)
+魔力：5e5*pow(lv+1,0.1)*pow(1.2,lv/25)
+
+</code></pre>
+<p>宝石：$30\times (lv+1)^{2.2}\times 1.2^{lv\div 25}$</p>
+<p>魔力：$5\times 10^5\times (lv+1)^{0.1}\times 1.2^{lv\div 25}$</p>
+<p>主要影响的值：</p>
+<pre><code>sciencePerSec, scienceLimit
+
+</code></pre>
+<p><strong>几何学：</strong></p>
+<blockquote><p>花纹与光斑启发了人们对图形的思考。</p>
+</blockquote>
+<p>内码：<code>tech.geometry</code></p>
+<p>前置技术：</p>
+<pre><code>聚焦 Level.5
+整洁 Level.1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>研究：5e4*(lv+4)**2
+
+</code></pre>
+<p>研究：$5\times10^4\times(lv+4)^2$</p>
+<p><strong>巨石：</strong></p>
+<blockquote><p>她是如此之巨，以至于巨石都听从她的号令！</p>
+</blockquote>
+<p>内码：<code>tech.hugeStoneBuilding</code></p>
+<p>前置技术：</p>
+<pre><code>几何学 Level.1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>神学：1e6*(lv+2)**2
+经书：1e2+lv*20
+
+</code></pre>
+<p>神学：$10^6\times(lv+2)^2$</p>
+<p>经书：$100+lv\times 20$</p>
+<p>主要影响的值/方面：</p>
+<pre><code>hugeStoneEffectFactor, 巨石花费
+
+</code></pre>
+<p><strong>风语术：</strong></p>
+<blockquote><p>隐匿于气，交谈于风。</p>
+</blockquote>
+<p>内码：<code>tech.spellWind</code></p>
+<p>前置技术：</p>
+<pre><code>法术 Level.6
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔力：pow(4,lv)*100
+
+</code></pre>
+<p>魔力：$4^{lv}\times 100$</p>
+<p><strong>御鸟术：</strong></p>
+<blockquote><p>与鸟相关？对了一半。这法术确实与麻雀相关……</p>
+</blockquote>
+<p>内码：<code>tech.spellWind</code></p>
+<p>前置技术：</p>
+<pre><code>法术 Level.8
+风语术 Level.3
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔力：pow(5,lv)*500
+
+</code></pre>
+<p>魔力：$5^{lv}\times 500$</p>
+<p><strong>法阵：</strong></p>
+<blockquote><p>将施法过程描述出来，静态化，就变成了法阵。</p>
+</blockquote>
+<p>内码：<code>tech.fazhenBuilding</code></p>
+<p>前置技术：</p>
+<pre><code>法术 Level.10
+几何学 Level.1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>信徒：3e2*lv
+魔法师：3+lv
+
+</code></pre>
+<p>信徒：$300\times lv$</p>
+<p>魔法师：$3+lv$</p>
+<p>主要影响的值：</p>
+<pre><code>fazhenEffectFactor
+
+</code></pre>
+<p><strong>烈焰阵：</strong></p>
+<blockquote><p>燃烧！不过好像没有什么东西该被烧掉呢。</p>
+</blockquote>
+<p>内码：<code>tech.fireFazhen</code></p>
+<p>前置技术：</p>
+<pre><code>法阵 Level.2
+几何学 Level.3
+
+</code></pre>
+<p>花费：</p>
+<pre><code>水晶：300*(lv+1)
+魔力：pow(3,lv)*4
+
+</code></pre>
+<p>水晶：$300\times (lv+1)$</p>
+<p>魔力：$3^{lv}\times 4$</p>
+<p><strong>探索：</strong></p>
+<blockquote><p>城镇的远处时常有微光传来，那似乎不仅仅是自然的造物……</p>
+</blockquote>
+<p>内码：<code>tech.explore</code></p>
+<p>前置技术：</p>
+<pre><code>烈焰阵 Level.2
+聚焦 Level.12
+
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：1e17*1e2**lv
+透镜：pow(4,lv)*2
+
+</code></pre>
+<p>膜拜次数：$10^{17}\times 100^{lv}$</p>
+<p>透镜：$4^{lv}\times 2$</p>
+<p><strong>战意感应：</strong></p>
+<blockquote><p>法阵与乌云以红色的光柱连接，让她知道人们渴望战斗。</p>
+</blockquote>
+<p>内码：<code>tech.warMindInduction</code></p>
+<p>前置技术：</p>
+<pre><code>探索 Level.3
+烈焰阵 Level.5
+虔诚感应 Level.5
+
+</code></pre>
+<p>花费：</p>
+<pre><code>神学：pow(3,lv)*1000
+法阵：lv+1
+
+</code></pre>
+<p>神学：$3^{lv}\times 1000$</p>
+<p>法阵：$lv+1$</p>
+<p>主要影响的方面：</p>
+<pre><code>战意感应系统
+
+</code></pre>
+<p><strong>疾风阵：</strong></p>
+<blockquote><p>强劲的风力加上成块的碎土能使敌人倒退好几步，但也会吹跑正在飞向教堂的鸽子。</p>
+</blockquote>
+<p>内码：<code>tech.windFazhen</code></p>
+<p>前置技术：</p>
+<pre><code>探索 Level.3
+烈焰阵 Level.5
+御鸟术 Level.8
+战意感应 Level.2
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔力：pow(3,lv)*1000
+法阵：lv+1
+
+</code></pre>
+<p>魔力：$3^{lv}\times 1000$</p>
+<p>法阵：$lv+1$</p>
+<h4>真理<code>III</code>：</h4>
+<p><strong>驱鸽仪：</strong></p>
+<blockquote><p>有人曾说这将是真理 III 中的第一个研究。现在看来他说得对。</p>
+</blockquote>
+<p>内码：<code>tech.antiGugu</code></p>
+<p>前置技术：</p>
+<pre><code>疾风阵 Level.2
+
+</code></pre>
+<p>花费：</p>
+<pre><code>巨石：pow(2,lv)*6
+研究：pow(3,lv)*10000
+
+</code></pre>
+<p>巨石：$2^{lv}\times 6$</p>
+<p>研究：$3^{lv}\times 10000$</p>
+<p><strong>祝福术：</strong></p>
+<blockquote><p>来自她的祝福能让信徒们如获新生。</p>
+</blockquote>
+<p>内码：<code>tech.blessing</code></p>
+<p>前置技术：</p>
+<pre><code>驱鸽仪 Level.1
+疾风阵 Level.2
+探索 Level.4
+
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：1e16*2**lv
+神学：50000*2**lv
+
+</code></pre>
+<p>膜拜次数：$10^{16}\times 2^{lv}$</p>
+<p>神学：$50000\times 2^{lv}$</p>
+<p><strong>时间感应：</strong></p>
+<blockquote><p>数百双眼睛盯着法阵中幽蓝色的光芒，向她祈求永恒的瞬间。</p>
+</blockquote>
+<p>内码：<code>tech.timeInduction</code></p>
+<p>前置技术：</p>
+<pre><code>驱鸽仪 Level.2
+法阵 Level.9
+眼镜 Level.40
+
+</code></pre>
+<p>花费：</p>
+<pre><code>世界速度：(1-1/(lv+2))*(1+0.2*lv)
+知识之书：floor(lv/4+0.5)
+
+</code></pre>
+<p>世界速度：$(1-1\div(lv+2))\times(1+0.2\times lv)$</p>
+<p>知识之书：$\lfloor lv\div 4+0.5\rfloor$</p>
+<p>主要影响的方面：</p>
+<pre><code>时间感应系统
+
+</code></pre>
+<p><strong>魔灵树：</strong></p>
+<blockquote><p>魔灵树的果实天生自带保护魔法，这使这些果实为敌人所觊觎。</p>
+</blockquote>
+<p>内码：<code>tech.magicTree</code></p>
+<p>前置技术：</p>
+<pre><code>祝福术 Level.10
+法阵 Level.10
+
+</code></pre>
+<p>花费：</p>
+<pre><code>膜拜次数：lv**lv
+魔力：1e9*2**lv
+
+</code></pre>
+<p>膜拜次数：$lv^{lv}$</p>
+<p>神学：$10^9\times 2^{lv}$</p>
+<p>主要影响的方面：</p>
+<pre><code>魔灵树树苗的花费
+
+</code></pre>
+<p><strong>远征：</strong></p>
+<blockquote><p>&lt;尚未实装&gt;</p>
+</blockquote>
+<p>内码：<code>tech.expedition</code></p>
+<p>前置技术：</p>
+<pre><code>祝福术 Level.12
+魔灵树 Level.1
+
+</code></pre>
+<p>花费：</p>
+<pre><code>经书：300+lv*50
+研究：1e6*1.12**lv
+
+</code></pre>
+<p>经书：$300+lv\times 50$</p>
+<p>研究：$10^6\times 1.12^{lv}$</p>
+<h4>真理<code>IV</code>：</h4>
+<p>暂未开发</p>
+<h4>真理<code>V</code>：</h4>
+<p>暂未开发</p>
+<h3>感应：</h3>
+<p>由于感应功能过于复杂，所以这里只给出相关源码。具体请自行研究。</p>
+<h4>虔诚感应：</h4>
+<p>对<code>moDelta</code>值产生影响。</p>
+<p>解锁条件：</p>
+<pre><code>tech.devotionInduction&gt;0
+
+</code></pre>
+<p>具体内容：</p>
+<pre><code class='language-javascript' lang='javascript'>//定义的方法：
+getDevotion(){
+	this.devotion+=Math.pow(this.tech.devotionInduction,2);
+},
+devotionInductionFactor(){
+	let x=this.devotion;
+	return Math.pow(1.2,Math.sin(Math.pow(x,1/3))*Math.log2(x+1));
+},
+    
+//在每个游戏Tick：
+let dd=Math.min(this.devotion,s*Math.max(this.devotion*0.001*Math.max(1,Math.sqrt(this.devotionInductionFactor)),2));
+this.devotion-=dd;
+
+//注：devotionInductionFactor是直接影响moDelta的元素
+</code></pre>
+<h4>战意感应：</h4>
+<p>解锁条件：</p>
+<pre><code>tech.warMindInduction&gt;0
+
+</code></pre>
+<p>具体内容：</p>
+<p>控制战争强度。当感应值达到$1000$后将激活入侵。</p>
+<p>具体过于复杂，故不展开。</p>
+<h4>时间感应：</h4>
+<p>解锁条件：</p>
+<pre><code>tech.timeInduction&gt;0
+
+</code></pre>
+<p>具体内容：</p>
+<p>控制世界速度。点击按钮时将加快世界速度。</p>
+<p>世界速度决定了<strong>所有</strong>游戏内容运行的速度。</p>
+<p>当达到世界速度上限时将扣除一部分世界速度。</p>
+<pre><code class='language-javascript' lang='javascript'>世界速度上限 = 1+tech.timeInduction*0.2
+</code></pre>
+<p>$1+tech.timeInduction\times 0.2$</p>
+<p>具体过于复杂，故不展开。</p>
+<h2>外域</h2>
+<blockquote><p>	随着文明的重新建立，人们意识到这个星球上遗留的文明不止一个。“比平凡与愚昧更可怕的是失去光明。”他们是否仍膜拜着Siyuan呢？</p>
+<p>	不管如何，人们已经不甘于平凡的生活了。当得知关于敌人的消息后，他们反而热血沸腾，渴望通过战斗来获得全新的资源。</p>
+</blockquote>
+<p><strong>解锁条件：</strong></p>
+<pre><code>tech.explore&gt;0
+
+</code></pre>
+<h3>基础：</h3>
+<h4>值：</h4>
+<p><strong>元素塔等级：</strong></p>
+<p>你的元素塔等级。</p>
+<p>内码：<code>elementTower</code></p>
+<h4>按钮：</h4>
+<p><strong>元素塔：</strong></p>
+<p>花费：</p>
+<pre><code>巨石：3+floor(2*elementTower)
+法阵：1+floor(0.25*elementTower)
+透镜：pow(4,elementTower)*100
+
+</code></pre>
+<p>巨石：$3+\lfloor2\times elementTower\rfloor$</p>
+<p>法阵：$1+\lfloor 0.25\times elementTower\rfloor$</p>
+<p>透镜：$4^{elementTower}\times 100$</p>
+<h3>元素：</h3>
+<p><strong>元素塔可产生的元素：</strong></p>
+<p>$水元素\color{lightblue}\text{水元素}$<code>water</code></p>
+<p>$火元素\color{orange}\text{火元素}$<code>fire</code></p>
+<p>$风元素\color{#dddd00}\text{风元素}$<code>wind</code></p>
+<p>$土元素\color{brown}\text{土元素}$<code>earth</code></p>
+<p>每秒元素塔自动产生每种元素：</p>
+<pre><code>0.001*elementTower
+
+</code></pre>
+<p>$0.001\times elementTower$</p>
+<p><strong>抗击入侵获得的元素：</strong></p>
+<p>$魔元素\color{purple}\text{魔元素}$<code>magic</code></p>
+<p><strong>暂时不可获得的元素：</strong></p>
+<p>$谬元素\color{pink}\text{谬元素}$<code>fals</code></p>
+<p>$乱元素\color{fuchsia}\text{乱元素}$<code>luan</code></p>
+<p>$虚元素\color{black}\text{虚元素}$<code>void</code></p>
+<p>$冰元素\color{skyblue}\text{冰元素}$<code>ice</code></p>
+<p>$气元素\color{#ccccff}\text{气元素}$<code>air</code></p>
+<p>$雨元素\color{blue}\text{雨元素}$<code>rain</code></p>
+<p>$木元素\color{#44dd00}\text{木元素}$<code>wood</code></p>
+<p>$炭元素\color{#886644}\text{炭元素}$<code>coal</code></p>
+<h3>建设：</h3>
+<p><strong>水箭塔</strong></p>
+<p>解锁条件：</p>
+<pre><code>tech.spellWater&gt;=1
+
+</code></pre>
+<p>效果：</p>
+<pre><code>0.1魔法伤害(0.8s冷却)
+
+</code></pre>
+<p>攻击时花费：</p>
+<pre><code>0.01水元素/秒
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：1
+巨石：5
+水元素：2
+
+</code></pre>
+<p>建造时间：</p>
+<pre><code>20秒
+
+</code></pre>
+<p><strong>火焰陷阱</strong></p>
+<p>解锁条件：</p>
+<pre><code>tech.fireFazhen&gt;=3
+
+</code></pre>
+<p>效果：</p>
+<pre><code>0.3物理伤害/秒
+
+</code></pre>
+<p>攻击时花费：</p>
+<pre><code>0.01火元素/秒
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：1
+巨石：5
+火元素：5
+
+</code></pre>
+<p>建造时间：</p>
+<pre><code>30秒
+
+</code></pre>
+<p><strong>疾风阵</strong></p>
+<p>解锁条件：</p>
+<pre><code>tech.windFazhen&gt;=1
+tech.spellWind&gt;=5
+
+</code></pre>
+<p>效果：</p>
+<pre><code>0.15击退(1.0s冷却)
+
+</code></pre>
+<p>攻击时花费：</p>
+<pre><code>土、风元素各0.01/秒
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：1
+巨石：5
+风元素：7
+土元素：7
+
+</code></pre>
+<p>建造时间：</p>
+<pre><code>40秒
+
+</code></pre>
+<p><strong>咕咕阵</strong></p>
+<p>解锁条件：</p>
+<pre><code>tech.windFazhen&gt;=1
+tech.spellBird&gt;=5
+
+</code></pre>
+<p>效果：</p>
+<pre><code>[1.0/(距离+2)]精神伤害/秒
+
+</code></pre>
+<p>攻击时花费：</p>
+<pre><code>土、风元素各0.02/秒
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：1
+巨石：5
+风元素：15
+
+</code></pre>
+<p>建造时间：</p>
+<pre><code>45秒
+
+</code></pre>
+<p><strong>纯魔巨炮</strong></p>
+<p>解锁条件：</p>
+<pre><code>tech.fazhenBuilding&gt;=5
+获得魔元素
+
+</code></pre>
+<p>效果：</p>
+<pre><code>15.0魔法伤害(40~60s冷却)
+
+</code></pre>
+<p>攻击时花费：</p>
+<pre><code>水、火、土、风、魔元素各0.01/秒
+
+</code></pre>
+<p>花费：</p>
+<pre><code>法阵：2
+魔力：1000000
+魔元素：30
+
+</code></pre>
+<p>建造时间：</p>
+<pre><code>60秒
+
+</code></pre>
+<h3>入侵：</h3>
+<p>由于此部分过于复杂，所以这里仅涉及基础内容。</p>
+<h4>值：</h4>
+<p><strong>光明：</strong></p>
+<p>你的游戏界面亮度等于你的光明值。</p>
+<p>内码：<code>light</code></p>
+<p>光明值会缓慢恢复，取决于你的元素塔个数。由于公式较为复杂，故不展开。</p>
+<p>怪物达到家门口时你的光明值将被缓慢扣去。</p>
+<h4>按钮：</h4>
+<p><strong>召唤拯救：</strong></p>
+<p>效果：</p>
+<pre><code>消灭当前所有怪物
+
+</code></pre>
+<p>花费：</p>
+<pre><code>20%光明
+
+</code></pre>
+<p>特殊：</p>
+<pre><code>至少拥有50%光明才能召唤拯救
+
+</code></pre>
+<h4>怪物：</h4>
+<p>怪物距离家门口的距离取决于你的元素塔个数。</p>
+<p>怪物的速度、生命等取决于怪物的等级。</p>
+<p>怪物的等级取决于战争等级的大小。</p>
+<p>战争等级的大小由战意感应控制。</p>
+<p>更理性的内容由于过于繁琐故不展开。</p>
+<h3>探索：</h3>
+<p>暂未开发。</p>
+<h2>基地</h2>
+<blockquote><p>	随着技术的发展，一片专门用于工业生产的区域被开辟出来。为了向Siyuan奉上更多的膜拜，人们在此试验千奇百怪的新方法，试图找到一个高效的生产方案。</p>
+<p>	试验中常见的高风险操作和敌人的攻击是这儿多灾多难的主要原因。幸运的是基地受到Siyuan的护佑，不至于被摧毁。</p>
+</blockquote>
+<p><strong>解锁条件：</strong></p>
+<pre><code>tech.magicTree&gt;0
+
+</code></pre>
+<h3>值：</h3>
+<p><strong>魔灵树树苗数</strong></p>
+<p>你的魔灵树树苗个数。</p>
+<p>内码：<code>magicTreeSeed</code></p>
+<h3>按钮：</h3>
+<p><strong>魔灵树树苗</strong></p>
+<p>效果：</p>
+<pre><code>暂未开发
+
+</code></pre>
+<p>花费：</p>
+<pre><code>魔元素：7.2e3/(tech.magicTree+10/(magicTreeSeed+1))
+
+</code></pre>
+<p>魔元素：$7.2\times10^3\div(tech.magicTree+10\div(magicTreeSeed+1))$</p>
+<p>激活条件：</p>
+<pre><code>解锁基地
+
+</code></pre>
+<h2>附录</h2>
+<h3>成就：</h3>
+<p><strong>初次膜拜：</strong></p>
+<pre><code>moCount&gt;0
+
+</code></pre>
+<p><strong>事务繁忙：</strong></p>
+<pre><code>churchs&gt;=5
+
+</code></pre>
+<p><strong>微小的贡献：</strong></p>
+<pre><code>XY&gt;=100
+
+</code></pre>
+<p><strong>爆 double 啦：</strong></p>
+<pre><code>信徒花费达到无穷大
+
+</code></pre>
+<p><strong>稳定发挥：</strong></p>
+<pre><code>spLevel&gt;=3
+
+</code></pre>
+<h3>文档：</h3>
+<blockquote><p>	在探索荒野的时候，人们发现了一些来自失落文明的文档。它们现在看起来奥妙重重，难以读懂，但也许对将来文明的重建有巨大的帮助。</p>
+</blockquote>
+<p><strong>文档$A$：</strong></p>
+<p>链接已失效。</p>
+<p><strong>文档$B$：</strong></p>
+<p>讲述了真理<code>I</code>和真理<code>II</code>的解法。</p>
+<p><strong>文档$C$：</strong></p>
+<p>一张无效的图片。</p>
+<p><strong>文档$D$：</strong></p>
+<p>一些无效的信息。</p>
+<p><strong>文档$E$：</strong></p>
+<p>讲述了真理<code>IV</code>的解法。</p>
+<p><strong>文档$F$：</strong></p>
+<p>暂未开发。</p>
+<h3>每日信息：</h3>
+<p>所有每日信息一览：</p>
+<p>（部分图片、超链接和<code>Markdown</code>代码被省略）</p>
+<pre><code>你强归你强，Siyuan比你强！
+你可以按住Enter来快速点击一个按钮。
+Siyuan是我们的红太阳，没有她我们会死！
+你不能通过按住Shift点击一个按钮以直接购买最大数量的事物。
+今天又是美好的一天~
+若不是Siyuan相助，也许我到现在还不知道我做错了什么。现在我知道了，是LCT上splay的时候判断父亲是否为根直接用了if(fa-&gt;fa)。
+洁白的光点游走于漆黑的天幕之上，暗紫色的薄纱在其间舞动。在此无月之夜，是否可以知晓：“后缀自动机怎么写？”
+那些文档有一部分真的有用……
+Siyuan 膜 她 自 己
+Siyuan D 她 自 己
+如果你花掉了一些东西，它的花费也会降低，就像你从没买过它一样。
+qwq
+要想探寻真理，不仅要虔诚膜拜Siyuan，领导者的实力也是很重要的。
+code.replace(/\\n\\s*\\{/mg,\&#39;{\&#39;);
+嘤嘤嘤
+Hello world!
+在夕阳的照耀下，教堂的圆顶散发出金色的光辉。
+这一刻，我们都是Siyuan的忠实粉丝。
+Do the magic!
+传说Siyuan会在被她抛弃的终端上用 root 权限执行rm -rf /*。
+Siyuan太强了，所以你复制不了这个网站中的任何一个Siyuan。
+空谈误国，实干兴邦。
+&lt;img src=&quot;./daily1.png&quot;&gt;
+&lt;img src=&quot;./daily2.png&quot;&gt;
+&lt;img src=&quot;./daily3.png&quot;&gt;
+&lt;img src=&quot;./daily4.png&quot;&gt;
+OrzSiyuan 就来 orzsiyuan.com！
+你知道吗？Siyuan几乎每天都会上几次http://lydsy.online！(难道网址中的dsy是天意？)
+追寻真理的各种花费与你本轮尝试次数有关。
+追寻真理时重置会将当前成功轮数也清空！
+在真理之路上，要不畏艰辛，敢于推翻重来，才不会在错误的道路上越走越远。
+窝 又 被 Siyuan D 了 QAQ
+道路千万条，光明第一条。防御没做好，黑屏两行泪。
+元素和光明在你下线时也会增加！
+贪 D 的(9^0+9^1+...+9^n+...)头 Siyuan
+Siyuan:“辣鸡，真辣鸡！”
+Siyuan:“泥萌怎么这么菜 nya？”
+Siyuan:“我就 D 你怎么了？”
+Siyuan:“哪场 ** CF 连样例解释都没有？”
+Siyuan:“tourist 能过，那窝肯定也能过！”
+萌新三连:“窝怎么立直了 nya？胡是什么 nya，可以跳过吗？自摸是不是每巡都有的，好烦 nya！”
+https://orzsiyuan.com
+如果出现了难以对付的敌人，你可以召唤拯救扫清他们。
+祝贺 Siyuan ZJOI2019 Day2 40+40+50=130分 &amp;&amp; 触发女装 Flag !
+2019-08-21 Siyuan 被阿祭
+Siyuan AK NOI！
+Siyuan AK IOI！
+Siyuan 女装！
+传教可以增加你的信徒数量。
+传教中出现的题目来自某场Siyuan将要 AK 的比赛的笔试。
+洛谷膜拜 Siyuan 主题：https://www.luogu.org/theme/design/5321
+强迫症真的这么好吗？
+JRNEOJ 不是 OJ！
+当世界速度达到上限时，会触发时间震荡，使你失去一些世界速度。
+</code></pre>
+<h2>后记</h2>
+<p><del>咕咕咕……</del></p>
