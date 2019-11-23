@@ -1,0 +1,152 @@
+@media screen and (min-width:1000px){
+	body{
+		padding:4% 20% 4% 20%;
+	}
+}
+@media screen and (max-width:1000px){
+	body{
+		padding:4% 4% 4% 4%;
+	}
+}
+
+h1,h2,h3,h4,h5,h6{
+	padding: 3px;
+	border-radius: 3px;
+}
+h1{
+	background-color: rgb(128, 192, 255);
+	margin:20px 0;
+}
+h2{
+	background-color: #aaccaa;
+	margin:18px 0;
+}
+h3{
+	background-color: #ddbbbb;
+	margin:16px 0;
+}
+h4{
+	background-color: #eeeecc;
+	margin:14px 0;
+}
+h5{
+	background-color: #ddffff;
+	margin:12px 0;
+}
+h6{
+	background-color: #eeeeee;
+	margin:10px 0;
+}
+
+hr{
+	border: 1px lightgray solid;
+}
+
+del{
+	color:gray;
+}
+
+code{
+	color:#222222;
+	border-radius: 2px;
+	background: #eeeeee;
+	padding: 0 2px;
+}
+pre{
+	border: 1px black solid;
+	background: whitesmoke;
+	border-radius: 5px;
+	padding: 5px;
+}
+pre code{
+	color:black;
+	border-radius: 0;
+	background: whitesmoke;
+	padding: 0;
+	tab-size: 4;
+}
+
+blockquote{
+	margin-left: 5px;
+	border-left: 5px skyblue solid;
+	padding-left: 10px;
+	background: lightcyan;
+}
+
+p{
+	text-indent: 32px;
+}
+
+p span{
+	text-indent: 0;
+}
+
+a{
+	text-decoration: none;
+}
+a:link,a:visited{
+	color:rgb(255, 128, 0);
+}
+a:hover{
+	color:orange;
+}
+a:active{
+	color:rgb(255, 96, 0);
+}
+
+button,select{
+	border: 1px gray solid;
+	border-radius: 5px;
+	background: white;
+	color:black;
+	padding: 4px 8px;
+	line-height: 18px;
+}
+
+select{
+	height: 28px;
+	padding: 0 0 !important;
+}
+
+button:hover{
+	background: whitesmoke;
+
+}
+button:active{
+	background: lightgray;
+}
+button:disabled{
+	border: 1px rgba(0,0,0,0) solid;
+	background-color:gray !important;
+	cursor: not-allowed;
+}
+
+blockquote{
+	margin-inline-end: 5px;
+}
+
+li{
+	border-radius: 5px;
+	margin: 5px 0px;
+}
+
+input{
+	max-width: 100%;
+}
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table,table td,table th{
+	border: 1px #dddddd solid;
+}
+
+table th{
+	background: #eeeeee;
+}
+
+img{
+	max-width: 100%;
+}
