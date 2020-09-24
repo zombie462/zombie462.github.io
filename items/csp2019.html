@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSP-S 2019 测试</title>
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="CSP-S 2019">
+<meta http-equiv="content-type" content="text/html;charset=GB18030">
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+body{
+	width: 694px
+	margin: auto
+}
+.top,.botton,.center {
+	height: auto
+	width: 100%
+}
+#left {
+    width: 100%;
+    float: left;
+    padding: 0 10px;
+    height: auto;
+}
+</style>
+</head>
+	<script language="JavaScript">
+    function submitOnclick(){
+    	var form1=document.getElementById('form1');
+    	var score=0;
+    	form1.p1.value="A";
+		if (form1.p1.value=="D") score+=2;
+		if (form1.p2.value=="C") score+=2;
+		if (form1.p3.value=="D") score+=2;
+		if (form1.p4.value=="B") score+=2;
+		if (form1.p5.value=="B") score+=2;
+		if (form1.p6.value=="B") score+=2;
+		if (form1.p7.value=="C") score+=2;
+		if (form1.p8.value=="B") score+=2;
+		if (form1.p9.value=="B") score+=2;
+		if (form1.p10.value=="A") score+=2;
+		if (form1.p11.value=="D") score+=2;
+		if (form1.p12.value=="D") score+=2;
+		if (form1.p13.value=="B") score+=2;
+		if (form1.p14.value=="B") score+=2;
+		if (form1.p15.value=="A") score+=2;
+		if (form1.p16_1.value=="N") score+=1;
+		if (form1.p16_2.value=="Y") score+=1;
+		if (form1.p16_3.value=="Y") score+=1.5;
+		if (form1.p16_4.value=="Y") score+=1.5;
+		if (form1.p16_5.value=="D") score+=3;
+		if (form1.p16_6.value=="A") score+=2;
+		if (form1.p17_1.value=="Y") score+=1;
+		if (form1.p17_2.value=="N") score+=1;
+		if (form1.p17_3.value=="Y") score+=1.5;
+		if (form1.p17_4.value=="N") score+=1.5;
+		if (form1.p17_5.value=="C") score+=2;
+		if (form1.p17_6.value=="C") score+=2;
+		if (form1.p18_1.value=="Y") score+=1;
+		if (form1.p18_2.value=="N") score+=2;
+		if (form1.p18_3.value=="N") score+=2;
+		if (form1.p18_4.value=="N") score+=2;
+		if (form1.p18_5.value=="D") score+=2;
+		if (form1.p18_6.value=="C") score+=2;
+		alert("提交成功 - 得分："+score.toFixed(1));
+		return 1;
+	}
+</script>
+<body>
+    <div class="center">
+        <div id="left">
+            <ul>
+            	<form id="form1"> 
+                <h1>CSP-S 2019 测试</h1>
+                <b>一、单项选择题（共 15 题，每题 2 分，共计 30 分；每题有且仅有一个正确选项）</b><br>
+                
+				<br>1. 若有定义：<code>int a=7; float x=2.5, y=4.7;</code> 则表达式 <code>x+a%3*(int)(x+y)%2</code> 的值是（   ）。<br>
+				<input type="radio" name="p1" value="A" />A. 0.000000
+				<input type="radio" name="p1" value="B" />B. 2.750000
+				<input type="radio" name="p1" value="C" />C. 2.500000
+				<input type="radio" name="p1" value="D" />D. 3.500000<br>
+				
+                <br>2. 下列属于图像文件格式的有（   ）。<br>
+				<input type="radio" name="p2" value="A" />A. WMV
+				<input type="radio" name="p2" value="B" />B. MPEG
+				<input type="radio" name="p2" value="C" />C. JPEG
+				<input type="radio" name="p2" value="D" />D. AVI<br>		
+				
+                <br>3. 二进制数 <code>11 1011 1001 0111</code> 和 <code>01 0110 1110 1011</code> 进行逻辑或运算的结果是（   ）。<br>
+				<input type="radio" name="p3" value="A" />A. 11 1111 1101 1111
+				<input type="radio" name="p3" value="B" />B. 11 1111 1111 1101<br> 
+				<input type="radio" name="p3" value="C" />C. 10 1111 1111 1111
+				<input type="radio" name="p3" value="D" />D. 11 1111 1111 1111<br> 
+				
+                <br>4. 编译器的功能是（   ）。<br>
+				<input type="radio" name="p4" value="A" />A. 将源程序重新组合<br>
+				<input type="radio" name="p4" value="B" />B. 将一种语言（通常是高级语言）翻译成另一种语言（通常是低级语言）<br>
+ 				<input type="radio" name="p4" value="C" />C. 将低级语言翻译成高级语言<br>
+				<input type="radio" name="p4" value="D" />D. 将一种编程语言翻译成自然语言<br>
+				
+                <br>5. 设变量 x 为 <code>float</code> 型且已赋值，则以下语句中能将 x 中的数值保留到小数点后两位，并将第三位四舍五入的是（   ）。<br>
+				<input type="radio" name="p5" value="A" />A. <code>x=(x*100+0.5)/100.0</code>
+				<input type="radio" name="p5" value="B" />B. <code>x=(int)(x*100+0.5)/100.0</code><br>
+ 				<input type="radio" name="p5" value="C" />C. <code>x=(x/100+0.5)*100.0</code>
+				<input type="radio" name="p5" value="D" />D. <code>x=x*100+0.5/100.0</code><br>
+
+                <br>6. 由数字 1,1,2,4,8,8 所组成的不同的4位数的个数是（   ）。<br>
+				<input type="radio" name="p6" value="A" />A. 104
+				<input type="radio" name="p6" value="B" />B. 102
+ 				<input type="radio" name="p6" value="C" />C. 98
+				<input type="radio" name="p6" value="D" />D. 100<br>
+				
+				<br>7. 排序的算法很多，若按排序的稳定性和不稳定性分类，则（   ）是不稳定排序。<br>
+				<input type="radio" name="p7" value="A" />A. 冒泡排序
+				<input type="radio" name="p7" value="B" />B. 直接插入排序
+ 				<input type="radio" name="p7" value="C" />C. 快速排序 
+				<input type="radio" name="p7" value="D" />D. 归并排序<br>	
+
+				<br>8. G 是一个非连通无向图（没有重边和自环），共有 28 条边，则该图至少有（   ）个顶点。<br>
+				<input type="radio" name="p8" value="A" />A. 10
+				<input type="radio" name="p8" value="B" />B. 9
+ 				<input type="radio" name="p8" value="C" />C. 11
+				<input type="radio" name="p8" value="D" />D. 8<br>	
+
+				<br>9. 一些数字可以颠倒过来看，例如 0,1,8 颠倒过来还是本身，6 颠倒过来是 9，9 颠倒过来看还是 6，其他数字颠倒过来都不构成数字。类似的，一些多位数也可以颠倒过来看，比如 106 颠倒过来是 901。假设某个城市的车牌只有 5 位数字，每一位都可以取 0 到 9。请问这个城市有多少个车牌倒过来恰好还是原来的车牌，并且车牌上的 5 位数能被 3 整除？（   ）<br>
+				<input type="radio" name="p9" value="A" />A. 40
+				<input type="radio" name="p9" value="B" />B. 25
+ 				<input type="radio" name="p9" value="C" />C. 30
+				<input type="radio" name="p9" value="D" />D. 20<br>	
+
+				<br>10. 一次期末考试，某班有 15 人数学得满分，有 12 人语文得满分，并且有 4 人语、数都是满分，那么这个班至少有一门得满分的同学有多少人？（   ）<br>
+				<input type="radio" name="p10" value="A" />A. 23
+				<input type="radio" name="p10" value="B" />B. 21
+ 				<input type="radio" name="p10" value="C" />C. 20
+				<input type="radio" name="p10" value="D" />D. 22<br>	
+
+				<br>11. 设 A 和 B 是两个长为 n 的有序数组，现在需要将 A 和 B 合并成一个排好序的数组，问任何以元素比较作为基本运算的归并算法，在最坏情况下至少要做多少次比较？（   ）<br>
+				<input type="radio" name="p11" value="A" />A. n^2
+				<input type="radio" name="p11" value="B" />B. nlogn
+ 				<input type="radio" name="p11" value="C" />C. 2n
+				<input type="radio" name="p11" value="D" />D. 2n-1<br>	
+
+				<br>12. 以下哪个结构可以用来存储图？（   ）<br>
+				<input type="radio" name="p12" value="A" />A. 栈 
+				<input type="radio" name="p12" value="B" />B. 二叉树 
+ 				<input type="radio" name="p12" value="C" />C. 队列 
+				<input type="radio" name="p12" value="D" />D. 邻接矩阵<br>	
+
+				<br>13. 以下哪些算法不属于贪心算法？（   ）<br>
+				<input type="radio" name="p13" value="A" />A. Dijkstra 算法 
+				<input type="radio" name="p13" value="B" />B. Floyd 算法 
+ 				<input type="radio" name="p13" value="C" />C. Prim 算法 
+				<input type="radio" name="p13" value="D" />D. Kruskal 算法<br>	
+
+				<br>14. 有一个等比数列，共有奇数项，其中第一项和最后一项分别是 2 和 118098，中间一项是 486，请问以下哪个数是可能的公比？（   ）<br>
+				<input type="radio" name="p14" value="A" />A. 5 
+				<input type="radio" name="p14" value="B" />B. 3 
+ 				<input type="radio" name="p14" value="C" />C. 4 
+				<input type="radio" name="p14" value="D" />D. 2<br>	
+				
+				<br>15. 正实数构成的数字三角形排列形式如图所示。第一行的数为 a[1][1]；第二行的数从左到右依次为 a[2][1],a[2][2]，第 n 行的数为 a[n][1],a[n][2],...,a[n][n]。从 a[1][1] 开始，每一行的数 a[i][j] 只有两条边可以分别通向下一行的两个数 a[i+1][j] 和 a[i+1][j+1]。用动态规划算法找出一条从 a[1][1] 向下通到 a[n][1],a[n][2],...,a[n][n] 中某个数的路径，使得该路径上的数之和最大。令 C[i][j] 是从 a[1][1] 到 a[i][j] 的路径上的数的最大和，并且 C[i][0]=C[0][i]=0，则 C[i][i]=（   ）。<br>
+				<img src="p15.jpg"><br>
+				<input type="radio" name="p15" value="A" />A. max{C[i-1][j-1],C[i-1][j]}+a[i][j] 
+				<input type="radio" name="p15" value="B" />B. C[i-1][j-1]+C[i-1][j]<br>
+ 				<input type="radio" name="p15" value="C" />C. max{C[i-1][j-1],C[i-1][j]}+1
+				<input type="radio" name="p15" value="D" />D. max{C[i][j-1],C[i-1][j]}+a[i][j]<br><br>
+																						
+				<b>二、阅读程序（程序输入不超过数组或字符串定义的范围；判断题正确选对，错误选错；除特殊说明外，判断题 1.5 分，选择题 4 分，共计 40 分）</b><br><br>
+				
+				16.<pre><code>
+#include &lt;cstdio&gt;
+using namespace std;
+int n;
+int a[100];
+
+int main() {
+    scanf("%d", &n);
+    for (int i = 1; i &lt;= n; ++i)
+        scanf("%d", &a[i]);
+    int ans = 1;
+    for (int i = 1; i &lt;= n; ++i) {
+        if (i &gt; 1 && a[i] &lt; a[i - 1])
+            ans = i;
+        while (ans &lt; n && a[i] &gt;= a[ans + 1])
+            ++ans;
+        printf("%d\n", ans);
+    }
+    return 0;
+}
+				</code></pre>	
+				
+				16-1. 第 16 行输出 ans 时，ans 的值一定大于 i。（   ）（1 分）<br>
+				<input type="radio" name="p16_1" value="Y" />对
+				<input type="radio" name="p16_1" value="N" />错<br>	
+								
+				<br>16-2. 第 16 行输出 ans 时，ans 的值一定大于 i。（   ）（1 分）<br>
+				<input type="radio" name="p16_2" value="Y" />对
+				<input type="radio" name="p16_2" value="N" />错<br>	
+										
+				<br>16-3. 若将第 12 行的 &lt; 改为 !=，程序输出的结果不会改变。（   ）<br>
+				<input type="radio" name="p16_3" value="Y" />对
+				<input type="radio" name="p16_3" value="N" />错<br>	
+				
+				<br>16-4. 当程序执行到第 16 行时，若 ans-i>2，则 a[i+1]<a[i]。（   ）<br>
+				<input type="radio" name="p16_4" value="Y" />对
+				<input type="radio" name="p16_4" value="N" />错<br>	
+				
+				<br>16-5. 若输入的a数组是一个严格单调递增的数列, 此程序的时间复杂度是（   ）。（3 分）<br>
+				<input type="radio" name="p16_5" value="A" />A. O(logn)
+				<input type="radio" name="p16_5" value="B" />B. O(n^2) 
+ 				<input type="radio" name="p16_5" value="C" />C. O(nlogn) 
+				<input type="radio" name="p16_5" value="D" />D. O(n)<br>	
+
+				<br>16-6. 最坏情况下，此程序的时间复杂度是（   ）。<br>
+				<input type="radio" name="p16_6" value="A" />A. O(n^2)
+				<input type="radio" name="p16_6" value="B" />B. O(logn) 
+ 				<input type="radio" name="p16_6" value="C" />C. O(n) 
+				<input type="radio" name="p16_6" value="D" />D. O(nlogn)<br>
+				
+				<br>17.<pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 1000;
+int n;
+int fa[maxn], cnt[maxn];
+
+int getRoot(int v) {
+    if (fa[v] == v) return v;
+    return getRoot(fa[v]);
+}
+
+int main() {
+    cin &gt;&gt; n;
+    for (int i = 0; i &lt; n; ++i) {
+        fa[i] = i;
+        cnt[i] = 1;
+    }
+    int ans = 0;
+    for (int i = 0; i &lt; n - 1; ++i) {
+        int a, b, x, y;
+        cin &gt;&gt; a &gt;&gt; b;
+        x = getRoot(a);
+        y = getRoot(b);
+        ans += cnt[x] * cnt[y];
+        fa[x] = y;
+        cnt[y] += cnt[x];
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+				</code></pre>	
+				
+				17-1. 输入的 a 和 b 值应在 [0,n-1] 的范围内。（   ）（1 分）<br>
+				<input type="radio" name="p17_1" value="Y" />对
+				<input type="radio" name="p17_1" value="N" />错<br>	
+								
+				<br>17-2. 第 16 行改成 <code>fa[i]=0;</code>，不影响程序运行结果。（   ）（1 分）<br>
+				<input type="radio" name="p17_2" value="Y" />对
+				<input type="radio" name="p17_2" value="N" />错<br>	
+										
+				<br>17-3. 若输入的 a 和 b 值均在 [0,n-1] 的范围内，则对于任意 0&lt;=i&lt;n 都有 0&lt;=fa[i]&lt;n。（   ）<br>
+				<input type="radio" name="p17_3" value="Y" />对
+				<input type="radio" name="p17_3" value="N" />错<br>	
+				
+				<br>17-4. 若输入的 a 和 b 值均在 [0,n-1] 的范围内，则对于任意 0&lt;=i&lt;n 都有 1&lt;=cnt[i]&lt;=n。（   ）<br>
+				<input type="radio" name="p17_4" value="Y" />对
+				<input type="radio" name="p17_4" value="N" />错<br>	
+
+				<br>17-5. 当 n 等于 50 时，若 a,b 的值都在 [0,49] 的范围内，且在第 25 行时 x 总是不等于 y，那么输出为（   ）。<br>
+				<input type="radio" name="p17_5" value="A" />A. 1276
+				<input type="radio" name="p17_5" value="B" />B. 1176 
+ 				<input type="radio" name="p17_5" value="C" />C. 1225 
+				<input type="radio" name="p17_5" value="D" />D. 1250<br>
+
+				<br>17-6. 此程序的时间复杂度是（   ）。<br>
+				<input type="radio" name="p17_6" value="A" />A. O(n)
+				<input type="radio" name="p17_6" value="B" />B. O(logn) 
+ 				<input type="radio" name="p17_6" value="C" />C. O(n^2)
+				<input type="radio" name="p17_6" value="D" />D. O(nlogn)<br>
+
+				<br>18. t 是 s 的子序列的意思是：从 s 中删去若干个字符，可以得到 t；特别的，如果 s=t，那么 t 也是 s 的子序列；空串是任何串的子序列。例如：<code>acd</code> 是 <code>abcde</code> 的子序列，<code>acd</code> 是 <code>acd</code> 的子序列，但 <code>adc</code> 不是 <code>abcde</code> 的子序列。s[x..y] 表示 s[x]...s[y] 共 y-x+l 个字符构成的字符串，若 x>y 则 s[x..y] 是空串。t[x..y] 同理。
+				<pre><code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+const int max1 = 202;
+string s, t;
+int pre[max1], suf[max1];
+
+int main() {
+    cin &gt;&gt; s &gt;&gt; t;
+    int slen = s.length(), tlen = t.length();
+
+    for (int i = 0, j = 0; i &lt; slen; ++i) {
+        if (j &lt; tlen && s[i] == t[j]) ++j;
+        pre[i] = j; // t[0..j-1] 是 s[0..i] 的子序列
+    }
+
+    for (int  i = slen - 1 , j = tlen - 1; i &gt;= 0; --i) {
+        if(j &gt;= 0 && s[i] == t [j]) --j;
+        suf[i]= j; // t[j+1..tlen-1] 是 s[i..slen-1] 的子序列
+    }
+
+    suf[slen] = tlen -1;
+    int ans = 0;
+    for (int i = 0, j = 0, tmp = 0; i &lt;= slen; ++i){
+        while(j &lt;= slen && tmp &gt;= suf[j] + 1) ++j;
+        ans = max(ans, j - i - 1);
+        tmp = pre[i];
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+				</code></pre>
+
+提示：<br>t[0..pre[i]-1] 是 s[0..i] 的子序列；<br> t[suf[i]+1..tlen-1] 是 s[i..slen-1] 的子序列。<br>
+				
+				<br>18-1. 程序输出时，suf 数组满足：对任意 0&lt;=i&lt;slen，有 suf[i]&lt;=suf[i + 1]。（   ）（1 分）<br>
+				<input type="radio" name="p18_1" value="Y" />对
+				<input type="radio" name="p18_1" value="N" />错<br>	
+								
+				<br>18-2. 当 t 是 s 的子序列时，输出一定不为 0。（   ）（2 分）<br>
+				<input type="radio" name="p18_2" value="Y" />对
+				<input type="radio" name="p18_2" value="N" />错<br>	
+										
+				<br>18-3. 程序运行到第 23 行时，j-i-1 一定不小于 0。（   ）（2 分）<br>
+				<input type="radio" name="p18_3" value="Y" />对
+				<input type="radio" name="p18_3" value="N" />错<br>	
+				
+				<br>18-4. 当 t 是 s 的子序列时，pre 数组和 suf 数组满足：对任意 0&lt;=i&lt;slen，有 pre[i]&gt;suf[i+1]+1。（   ）（2 分）<br>
+				<input type="radio" name="p18_4" value="Y" />对
+				<input type="radio" name="p18_4" value="N" />错<br>	
+
+				<br>18-5. 若 tlen=10，输出为 0，则 slen 最小为（   ）。<br>
+				<input type="radio" name="p18_5" value="A" />A. 10
+				<input type="radio" name="p18_5" value="B" />B. 12 
+ 				<input type="radio" name="p18_5" value="C" />C. 0
+				<input type="radio" name="p18_5" value="D" />D. 1<br>
+
+				<br>18-6. 若 tlen=10，输出为 2，则 slen 最小为（   ）。<br>
+				<input type="radio" name="p18_6" value="A" />A. 0
+				<input type="radio" name="p18_6" value="B" />B. 10
+ 				<input type="radio" name="p18_6" value="C" />C. 12
+				<input type="radio" name="p18_6" value="D" />D. 1<br>
+																									
+				<br><input name="text3" value="提交" type="submit" onclick="submitOnclick()">
+				</form>  
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
