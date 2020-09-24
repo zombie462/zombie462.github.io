@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>实验一</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=GB18030">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+body {
+    width: 694px;
+    margin: auto;
+}
+
+.top,.bottom,.center {
+    height: auto;
+    width: 100%;
+}
+
+#left {
+    width: 30%;
+    float: left;
+    padding: 0 10px;
+    height: auto;
+}
+
+#right {
+    width: 50%;
+    float: right;
+    height: auto;
+    padding-top: 30px;
+}
+
+.line {
+    height: 300px;
+    border-color: green;
+    border-left-style: solid;
+    border-width: 2px;
+}
+
+.img1 {
+    width: 35px;
+    height: 300px;
+    float: left;
+}
+
+.img2 {
+    width: 44px;
+    height: 300px;
+    float: right;
+}
+</style>
+</head>
+
+<script language="JavaScript">
+        function submitOnclick(){
+        var form1=document.getElementById('form1');
+        //用户名格式验证
+        if(form1.text1.value==""){
+            alert("用户名不能为空");
+            return false;
+        }
+        if(form1.text1.value.length<3 || form1.text1.value.length>20){
+            alert("用户名不能少于3个字符，不能超过20个字符");
+            return false;
+        }
+        //密码格式验证
+        if(form1.pwd1.value==""){
+            alert("密码不能为空");
+            return false;
+        }
+        if(form1.pwd1.value.length<6 || form1.pwd1.value.length>20){
+            alert("密码不能少于6个字符，不能超过20个字符");
+            return false;
+        }
+        // 第二次输入密码一致性验证
+        if(form1.pwd1.value != form1.pwd2.value){
+            alert("两次输入密码不一样，请重新输入！")
+            return false;
+        }
+        //性别判断
+        if(form1.gender.value != "male" && form1.gender.value != "female"){
+            alert("请选择性别！")
+            return false;
+        }
+        if (email.indexOf("@") == -1 && email.indexOf(".") == -1) {
+            alert("邮箱格式不正确！");
+            return false;
+        }
+            return true;
+     }
+</script>
+
+<body>
+    <!-- 顶部盒子 -->
+    <img class="top" src="image/01.gif" style="height: 180px;">
+    <h1 style="margin: -5px;"></h1>
+    <!-- 中间的盒子 -->
+    <div class="center">
+        <img src="image/02.gif" class="img1">
+        <div id="left">
+            <img src="image/reg.gif"> <b>注册帮助</b>
+            <ul>
+                <li>会员名：为会员登录网站的通行证，长度控制在3-20个字符之内。</li>
+                <li>密码：请设定在6-20位之间。</li>
+                <li>确认密码：确认密码必须与密码一致。</li>
+                <li>Email：请填写有效的Email地址，以便于与您联系。</li>
+            </ul>
+        </div>
+
+        <img src="image/04.gif" class="img2">
+        <div id="right">
+            <form id="form1" action="questionnaire.html">
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input name="text1" type="text"
+                            placeholder="长度控制在3-20个字符">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input type="password" name="pwd1"
+                            placeholder="请设定在6-20位之间">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>确认密码：</td>
+                        <td><input type="password" name="pwd2" size="20" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td><input type="radio" name="gender" value="male" />男 <input
+                            type="radio" name="gender" value="female" />女</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail：</td>
+                        <td><input type="email" name="email" size="30" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input name="text3" value="提交" type="submit"
+                            onclick="return submitOnclick()">
+                        </td>
+                        <td><input type="reset" value="重置" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- 竖线的实现 -->
+        <table class="line">
+            <tr>
+                <td valign="top"></td>
+            </tr>
+        </table>
+
+    </div>
+    <!-- 底部盒子 -->
+    <img class="bottom" src="image/03.jpg">
+</body>
+</html>
