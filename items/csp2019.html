@@ -27,41 +27,51 @@ body{
     function submitOnclick(){
     	var form1=document.getElementById('form1');
     	var score=0;
-    	form1.p1.value="A";
-		if (form1.p1.value=="D") score+=2;
-		if (form1.p2.value=="C") score+=2;
-		if (form1.p3.value=="D") score+=2;
-		if (form1.p4.value=="B") score+=2;
-		if (form1.p5.value=="B") score+=2;
-		if (form1.p6.value=="B") score+=2;
-		if (form1.p7.value=="C") score+=2;
-		if (form1.p8.value=="B") score+=2;
-		if (form1.p9.value=="B") score+=2;
-		if (form1.p10.value=="A") score+=2;
-		if (form1.p11.value=="D") score+=2;
-		if (form1.p12.value=="D") score+=2;
-		if (form1.p13.value=="B") score+=2;
-		if (form1.p14.value=="B") score+=2;
-		if (form1.p15.value=="A") score+=2;
-		if (form1.p16_1.value=="N") score+=1;
-		if (form1.p16_2.value=="Y") score+=1;
-		if (form1.p16_3.value=="Y") score+=1.5;
-		if (form1.p16_4.value=="Y") score+=1.5;
-		if (form1.p16_5.value=="D") score+=3;
-		if (form1.p16_6.value=="A") score+=2;
-		if (form1.p17_1.value=="Y") score+=1;
-		if (form1.p17_2.value=="N") score+=1;
-		if (form1.p17_3.value=="Y") score+=1.5;
-		if (form1.p17_4.value=="N") score+=1.5;
-		if (form1.p17_5.value=="C") score+=2;
-		if (form1.p17_6.value=="C") score+=2;
-		if (form1.p18_1.value=="Y") score+=1;
-		if (form1.p18_2.value=="N") score+=2;
-		if (form1.p18_3.value=="N") score+=2;
-		if (form1.p18_4.value=="N") score+=2;
-		if (form1.p18_5.value=="D") score+=2;
-		if (form1.p18_6.value=="C") score+=2;
-		alert("提交成功 - 得分："+score.toFixed(1));
+    	var info="";
+		if (form1.p1.value=="D") score+=2; else info=info+"1 "
+		if (form1.p2.value=="C") score+=2; else info=info+"2 "
+		if (form1.p3.value=="D") score+=2; else info=info+"3 "
+		if (form1.p4.value=="B") score+=2; else info=info+"4 "
+		if (form1.p5.value=="B") score+=2; else info=info+"5 "
+		if (form1.p6.value=="B") score+=2; else info=info+"6 "
+		if (form1.p7.value=="C") score+=2; else info=info+"7 "
+		if (form1.p8.value=="B") score+=2; else info=info+"8 "
+		if (form1.p9.value=="B") score+=2; else info=info+"9 "
+		if (form1.p10.value=="A") score+=2; else info=info+"10 "
+		if (form1.p11.value=="D") score+=2; else info=info+"11 "
+		if (form1.p12.value=="D") score+=2; else info=info+"12 "
+		if (form1.p13.value=="B") score+=2; else info=info+"13 "
+		if (form1.p14.value=="B") score+=2; else info=info+"14 "
+		if (form1.p15.value=="A") score+=2; else info=info+"15 "
+		if (form1.p16_1.value=="N") score+=1; else info=info+"16-1 "
+		if (form1.p16_2.value=="Y") score+=1; else info=info+"16-2 "
+		if (form1.p16_3.value=="Y") score+=1.5; else info=info+"16-3 "
+		if (form1.p16_4.value=="Y") score+=1.5; else info=info+"16-4 "
+		if (form1.p16_5.value=="D") score+=3; else info=info+"16-5 "
+		if (form1.p16_6.value=="A") score+=4; else info=info+"16-6 "
+		if (form1.p17_1.value=="Y") score+=1; else info=info+"17-1 "
+		if (form1.p17_2.value=="N") score+=1; else info=info+"17-2 "
+		if (form1.p17_3.value=="Y") score+=1.5; else info=info+"17-3 "
+		if (form1.p17_4.value=="N") score+=1.5; else info=info+"17-4 "
+		if (form1.p17_5.value=="C") score+=4; else info=info+"17-5 "
+		if (form1.p17_6.value=="C") score+=4; else info=info+"17-6 "
+		if (form1.p18_1.value=="Y") score+=1; else info=info+"18-1 "
+		if (form1.p18_2.value=="N") score+=2; else info=info+"18-2 "
+		if (form1.p18_3.value=="N") score+=2; else info=info+"18-3 "
+		if (form1.p18_4.value=="N") score+=2; else info=info+"18-4 "
+		if (form1.p18_5.value=="D") score+=4; else info=info+"18-5 "
+		if (form1.p18_6.value=="C") score+=4; else info=info+"18-6 "
+		if (form1.p19_1.value=="C") score+=3; else info=info+"19-1 "
+		if (form1.p19_2.value=="D") score+=3; else info=info+"19-2 "
+		if (form1.p19_3.value=="D") score+=3; else info=info+"19-3 "
+		if (form1.p19_4.value=="C") score+=3; else info=info+"19-4 "
+		if (form1.p19_5.value=="B") score+=3; else info=info+"19-5 "
+		if (form1.p20_1.value=="C") score+=3; else info=info+"20-1 "
+		if (form1.p20_2.value=="B") score+=3; else info=info+"20-2 "
+		if (form1.p20_3.value=="A") score+=3; else info=info+"20-3 "
+		if (form1.p20_4.value=="D") score+=3; else info=info+"20-4 "
+		if (form1.p20_5.value=="D") score+=3; else info=info+"20-5 "
+		alert("提交成功 - 得分："+score.toFixed(1)+" 错误的题目："+info);
 		return 1;
 	}
 </script>
@@ -85,7 +95,7 @@ body{
 				<input type="radio" name="p2" value="C" />C. JPEG
 				<input type="radio" name="p2" value="D" />D. AVI<br>		
 				
-                <br>3. 二进制数 <code>11 1011 1001 0111</code> 和 <code>01 0110 1110 1011</code> 进行逻辑或运算的结果是（   ）。<br>
+                <br>3. 二进制数 11 1011 1001 0111 和 01 0110 1110 1011 进行逻辑或运算的结果是（   ）。<br>
 				<input type="radio" name="p3" value="A" />A. 11 1111 1101 1111
 				<input type="radio" name="p3" value="B" />B. 11 1111 1111 1101<br> 
 				<input type="radio" name="p3" value="C" />C. 10 1111 1111 1111
@@ -200,7 +210,7 @@ int main() {
 				<input type="radio" name="p16_3" value="Y" />对
 				<input type="radio" name="p16_3" value="N" />错<br>	
 				
-				<br>16-4. 当程序执行到第 16 行时，若 ans-i>2，则 a[i+1]<a[i]。（   ）<br>
+				<br>16-4. 当程序执行到第 16 行时，若 ans-i&gt;2，则 a[i+1]&lt;a[i]。（   ）<br>
 				<input type="radio" name="p16_4" value="Y" />对
 				<input type="radio" name="p16_4" value="N" />错<br>	
 				
@@ -341,9 +351,180 @@ int main() {
 				<input type="radio" name="p18_6" value="A" />A. 0
 				<input type="radio" name="p18_6" value="B" />B. 10
  				<input type="radio" name="p18_6" value="C" />C. 12
-				<input type="radio" name="p18_6" value="D" />D. 1<br>
-																									
-				<br><input name="text3" value="提交" type="submit" onclick="submitOnclick()">
+				<input type="radio" name="p18_6" value="D" />D. 1<br><br>
+				
+				<b>三、完善程序（单选题，每小题 3 分，共计 30 分）</b><br><br> 
+				
+				19. （匠人的自我修养）一个匠人决定要学习 n 个新技术。要想成功学习一个新技术，他不仅要拥有一定的经验值，而且还必须要先学会若干个相关的技术。学会一个新技术之后，他的经验值会增加一个对应的值。给定每个技术的学习条件和习得后获得的经验值，给定他已有的经验值，请问他最多能学会多少个新技术。<br> 
+				<br>输入第一行有两个数，分别为新技术个数 n(1&lt;=n&lt;=10^3)，以及已有经验值 points(&lt;=10^7)。
+				<br>接下来 n 行。第 i 行的两个正整数，分别表示学习第 i 个技术所需的最低经验值 threshold[i](&lt;=10^7) 以及学会第 i 个技术后可获得的经验值 bonus[i](&lt;=10^7)。																				
+				<br>接下来 n 行。第 i 行的一个数 m[i](0&lt;=m[i]&lt;n)，表示第 i 个技术的相关技术数量。紧跟着 m 个两两不同的数，表示第 i 个技术的相关技术编号。
+				<br>输出最多能学会的新技术个数。
+				<br>下面的程序以 O(n^2) 的时间复杂度完成这个问题，试补全程序。
+				
+				<pre><code>
+#include&lt;cstdio&gt;
+using namespace std;
+const int maxn = 1001;
+
+int n;
+int cnt[maxn];
+int child [maxn][maxn];
+int unlock[maxn];
+int threshold[maxn], bonus[maxn];
+int points;
+bool find(){
+    int target = -1;
+    for (int i = 1; i &lt;= n; ++i)
+        if(① && ②){
+            target = i;
+            break;
+    }
+    if(target == -1)
+        return false;
+    unlock[target] = -1;
+    ③
+    for (int i = 0; i &lt; cnt[target]; ++i)
+        ④
+    return true;
+}
+
+int main(){
+    scanf("%d%d", &n, &points);
+    for (int i = 1; i &lt;= n; ++i){
+        cnt[i] = 0;
+        scanf("%d%d", &threshold[i], &bonus[i]);
+    }
+    for (int i = 1; i &lt;= n; ++i){
+        int m;
+        scanf("%d", &m);
+        ⑤
+        for (int j = 0; j &lt; m; ++j){
+            int fa;
+            scanf("%d", &fa);
+            child[fa][cnt[fa]] = i;
+            ++cnt[fa];
+        }
+    }
+
+    int ans = 0;
+    while(find())
+        ++ans;
+
+    printf("%d\n", ans);
+    return 0;
+}
+				</code></pre>
+				
+				19-1. ①处应填（   ）。<br>
+				<input type="radio" name="p19_1" value="A" />A. <code>unlock[i]&lt;=0</code>
+				<input type="radio" name="p19_1" value="B" />B. <code>unlock[i]&gt;=0</code>
+ 				<input type="radio" name="p19_1" value="C" />C. <code>unlock[i]==0</code>
+				<input type="radio" name="p19_1" value="D" />D. <code>unlock[i]==-1</code><br><br>
+					
+				19-2. ②处应填（   ）。<br>
+				<input type="radio" name="p19_2" value="A" />A. <code>threshold[i]&gt;points</code>
+				<input type="radio" name="p19_2" value="B" />B. <code>threshold[i]&gt;=points</code><br> 
+ 				<input type="radio" name="p19_2" value="C" />C. <code>points&gt;threshold[i]</code>
+				<input type="radio" name="p19_2" value="D" />D. <code>points&gt;=threshold[i]</code><br><br>
+
+				19-3. ③处应填（   ）。<br>
+				<input type="radio" name="p19_3" value="A" />A. <code>target=-1</code>
+				<input type="radio" name="p19_3" value="B" />B. <code>--cnt[target]</code><br> 
+ 				<input type="radio" name="p19_3" value="C" />C. <code>bonus[target]=0</code>
+				<input type="radio" name="p19_3" value="D" />D. <code>points+=bonus[target]</code><br><br>
+
+				19-4. ④处应填（   ）。<br>
+				<input type="radio" name="p19_4" value="A" />A. <code>cnt[child[target][i]]-=1</code>
+				<input type="radio" name="p19_4" value="B" />B. <code>cnt[child[target][i]]=0</code><br> 
+ 				<input type="radio" name="p19_4" value="C" />C. <code>unlock[child[target][i]]-=1</code>
+				<input type="radio" name="p19_4" value="D" />D. <code>unlock[child[target][i]]=0</code><br><br>
+
+				19-5. ⑤处应填（   ）。<br>
+				<input type="radio" name="p19_5" value="A" />A. <code>unlock[i]=cnt[i]</code>
+				<input type="radio" name="p19_5" value="B" />B. <code>unlock[i]=m</code><br> 
+ 				<input type="radio" name="p19_5" value="C" />C. <code>unlock[i]=0</code>
+				<input type="radio" name="p19_5" value="D" />D. <code>unlock[i]=-1</code><br><br>
+				
+				20. （取石子）Alice 和 Bob 两个人在玩取石子游戏。他们制定了 n 条取石子的规则，第 i 条规则为：如果剩余石子的个数大于等于 a[i] 且大于等于 b[i]， 那么他们可以取走 b[i] 个石子。他们轮流取石子。如果轮到某个人取石子，而他无法按照任何规则取走石子，那么他就输了。一开始石子有 m 个。请问先取石子的人是否有必胜的方法？<br> 
+				<br>输入第一行有两个正整数，分别为规则个数 n(1&lt;=n&lt;=64)，以及石子个数 m(&lt;=10^7)。
+				<br>接下来 n 行。第 i 行的两个正整数 a[i] 和 b[i](1&lt;=a[i]&lt;=10^7, 1&lt;=b[i]&lt;=64)。																				
+				<br>如果先取石子的人必胜，那么输出 <code>Win</code>，否则输出 <code>Loss</code>。<br>
+				<br>提示：
+				<br>可以使用动态规划解决这个问题。由于 b[i] 不超过 64，所以可以使用 64 位无符号整数去压缩必要的状态。
+				<br>status 是胜负状态的二进制压缩，trans 是状态转移的二进制压缩。<br> 
+				<br>试补全程序。<br>
+				<br>代码说明：
+				<br>~ 表示二进制补码运算符，它将每个二进制位的 0 变为 1、1 变为 0；
+				<br>^ 表示二进制异或运算符，它将两个参与运算的数中的每个对应的二进制位一一进行比较，若两个二进制位相同，则运算结果的对应二进制位为 0，反之为 1。 
+				<br>ull 标识符表示它前面的数字是 <code>unsigned long long</code> 类型。 
+				<pre><code>
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 64;
+int n, m;
+int a[maxn], b[maxn];
+unsigned long long status, trans;
+bool win;
+int main(){
+    scanf("%d%d", &n, &m);
+    for (int i = 0; i &lt; n; ++i)
+        scanf("%d%d", &a[i], &b[i]);
+    for(int i = 0; i &lt; n; ++i)
+        for(int j = i + 1; j &lt; n; ++j)
+            if (aa[i] &gt; a[j]){
+                swap(a[i], a[j]);
+                swap(b[i], b[j]);
+            }
+    status = ①;
+    trans = 0;
+    for(int i = 1, j = 0; i &lt;= m; ++i){
+        while (j &lt; n && ②){
+            ③;
+            ++j;
+        }
+        win = ④;
+        ⑤;
+    }
+
+    puts(win ? "Win" : "Loss");
+
+    return 0;
+}
+				</code></pre>
+				
+				20-1. ①处应填（   ）。<br>
+				<input type="radio" name="p20_1" value="A" />A. <code>0</code>
+				<input type="radio" name="p20_1" value="B" />B. <code>~0ull</code>
+ 				<input type="radio" name="p20_1" value="C" />C. <code>~0ull</code>
+				<input type="radio" name="p20_1" value="D" />D. <code>1</code><br><br>
+					
+				20-2. ②处应填（   ）。<br>
+				<input type="radio" name="p20_2" value="A" />A. <code>a[j]&lt;i</code>
+				<input type="radio" name="p20_2" value="B" />B. <code>a[j]==i</code><br> 
+ 				<input type="radio" name="p20_2" value="C" />C. <code>a[j]!=i</code>
+				<input type="radio" name="p20_2" value="D" />D. <code>a[j]&gt;i</code><br><br>
+
+				20-3. ③处应填（   ）。<br>
+				<input type="radio" name="p20_3" value="A" />A. <code>trans|=1ull&lt;&lt;(b[j]-1)</code>
+				<input type="radio" name="p20_3" value="B" />B. <code>status|=1ull&lt;&lt;(b[j]-1)</code><br> 
+ 				<input type="radio" name="p20_3" value="C" />C. <code>status+=1ull&lt;&lt;(b[j]-1)</code>
+				<input type="radio" name="p20_3" value="D" />D. <code>trans+=1ull&lt;&lt;(b[j]-1)</code><br><br>
+
+				20-4. ④处应填（   ）。<br>
+				<input type="radio" name="p20_4" value="A" />A. <code>~status|trans</code>
+				<input type="radio" name="p20_4" value="B" />B. <code>status&trans</code><br> 
+ 				<input type="radio" name="p20_4" value="C" />C. <code>status|trans</code>
+				<input type="radio" name="p20_4" value="D" />D. <code>~status&trans</code><br><br>
+
+				20-5. ⑤处应填（   ）。<br>
+				<input type="radio" name="p20_5" value="A" />A. <code>trans=status|trans^win</code>
+				<input type="radio" name="p20_5" value="B" />B. <code>status=trans&lt;&lt;1^win</code><br> 
+ 				<input type="radio" name="p20_5" value="C" />C. <code>trans=status^trans|win</code>
+				<input type="radio" name="p20_5" value="D" />D. <code>status=status&lt;&lt;1^win</code><br><br>
+																			 
+				<br><input name="submits" value="提交" type="submit" onclick="return submitOnclick()">
 				</form>  
             </ul>
         </div>
