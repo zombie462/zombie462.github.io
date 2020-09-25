@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<style type="text/css">
+		#left {
+		    width: 100%;
+		    float: left;
+		    padding: 0 40px;
+		    height: auto;
+		}
+	</style>
+	<head>
+		<meta charset="GB18030" />
+		<title>CSP 初赛模拟 Contest 1</title>
+	</head>
+	<body>
+		<div class="center">
+			<div id="left"> 
+				<form id="form1"> 
+					<h1>CSP 初赛模拟 Contest 1</h1>
+					<label></label>
+					
+					<br><b>一、单项选择题（共 15 题，每题 2 分，共计 30 分；每题有且仅有一个正确选项）</b><br> 
+					<label></label>
+					
+					<br>1. 若 a 是 <code>int</code> 类型的变量，则表达式 <code>!~a</code> 等价于下列的（   ）。<br> 
+					<input type="radio" name="p1" value="A" />A. <code>a!=0</code>
+					<input type="radio" name="p1" value="B" />B. <code>a==0</code>
+					<input type="radio" name="p1" value="C" />C. <code>a==-1</code>
+					<input type="radio" name="p1" value="D" />D. <code>a!=-1</code><br>
+					<label></label>
+					
+					<br>2. 给定无向图 G({V={1,2,3,4,5,6},E={(1,2),(2,3),(3,4),(4,5),(5,6),(6,1)}})，则它一共有（   ）个最大匹配。<br> 
+					<input type="radio" name="p2" value="A" />A. 1
+					<input type="radio" name="p2" value="B" />B. 2
+					<input type="radio" name="p2" value="C" />C. 3
+					<input type="radio" name="p2" value="D" />D. 4<br>
+					<label></label>
+					
+					<br>3. 下面的程序输出的结果是（   ）。
+					<pre><code>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+class A{
+public:
+	A(){}
+	virtual void print(){
+		puts("QAQ");
+	}
+	~A(){} 
+};
+class B:public A{
+public:
+	B(){}
+	void print(){
+		puts("QWQ");
+	}
+	~B(){}
+};
+int main(){
+	A* a=new B;
+	a-&gt;print();
+	return 0;
+}
+					</code></pre> 
+					 
+					<input type="radio" name="p3" value="A" />A. <code>QWQ</code>
+					<input type="radio" name="p3" value="B" />B. <code>QAQ</code>
+					<input type="radio" name="p3" value="C" />C. 空 
+					<input type="radio" name="p3" value="D" />D. 运行时错误<br>
+					<label></label>
+					
+					<br>4. 下面哪个地址最有可能是一个合法的 IPv6 地址？（   ）<br> 
+					<input type="radio" name="p4" value="A" />A. <code>2400:da00:0dbf:0000:0100</code>
+					<input type="radio" name="p4" value="B" />B. <code>2400:da00::dbf:0:100</code><br> 
+					<input type="radio" name="p4" value="C" />C. <code>10.10.22.16</code>
+					<input type="radio" name="p4" value="D" />D. <code>127.0.0.1</code><br>
+					<label></label>
+					
+					<br>5. 有一个栈 S，初始时为空。现在使元素 1,2,3,4,5 依次入栈，每个元素出栈时刻任意，则一共有（   ）中不同的出栈顺序，使得栈中任意时刻元素个数都不超过 3。<br> 
+					<input type="radio" name="p5" value="A" />A. 38
+					<input type="radio" name="p5" value="B" />B. 42
+					<input type="radio" name="p5" value="C" />C. 46
+					<input type="radio" name="p5" value="D" />D. 34<br> 
+					<label></label>
+					
+					<br><button name="submitAns" value="提交" type="button" onclick="submitAnswer()">提交答案</button>
+				</form>
+			</div> 
+		</div>
+		<script>
+			function submitAnswer(){
+			    var form1=document.getElementById('form1');
+				alert("提交成功"); 
+				var score=0,score1=0;
+				if (form1.p1.value=="C") score+=2,score1+=2,document.getElementsByTagName("label")[2].innerHTML="<font color='green'>正确答案：C - 得分：2.0/2.0</font>"; 
+				else document.getElementsByTagName("label")[2].innerHTML="<font color='red'>正确答案：C - 得分：0.0/2.0</font>";
+				if (form1.p2.value=="B") score+=2,score1+=2,document.getElementsByTagName("label")[3].innerHTML="<font color='green'>正确答案：B - 得分：2.0/2.0</font>"; 
+				else document.getElementsByTagName("label")[3].innerHTML="<font color='red'>正确答案：B - 得分：0.0/2.0</font>";
+				if (form1.p3.value=="A") score+=2,score1+=2,document.getElementsByTagName("label")[4].innerHTML="<font color='green'>正确答案：A - 得分：2.0/2.0</font>"; 
+				else document.getElementsByTagName("label")[4].innerHTML="<font color='red'>正确答案：A - 得分：0.0/2.0</font>";
+				if (form1.p4.value=="B") score+=2,score1+=2,document.getElementsByTagName("label")[5].innerHTML="<font color='green'>正确答案：B - 得分：2.0/2.0</font>"; 
+				else document.getElementsByTagName("label")[5].innerHTML="<font color='red'>正确答案：B - 得分：0.0/2.0</font>";
+				if (form1.p4.value=="D") score+=2,score1+=2,document.getElementsByTagName("label")[6].innerHTML="<font color='green'>正确答案：D - 得分：2.0/2.0</font>"; 
+				else document.getElementsByTagName("label")[6].innerHTML="<font color='red'>正确答案：D - 得分：0.0/2.0</font>";
+								
+				document.getElementsByTagName("label")[0].innerHTML="<font color='green'>本卷总分："+score.toFixed(1)+"/100.0</font>";
+				document.getElementsByTagName("label")[1].innerHTML="<font color='green'>本大题总分："+score1.toFixed(1)+"/30.0</font>";
+			}
+		</script>
+	</body>
+</html>
