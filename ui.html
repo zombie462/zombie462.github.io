@@ -31,6 +31,10 @@
 					v-html="`膜拜${YUKAI}${moDelta!==1?`${pn(moDelta)}次`:''}`"></button>
 				<span v-if="bookEffect>0">{{`${pn(bookEffect)}点击/秒`}}</span>
 			</div>
+			<div>
+				<button @click="moValue*=1.5"
+					v-html="`开挂`:''}`"></button>
+			</div>
 			<div v-if="moCount>=10">
 				<button @click="buyAdvancedMo"
 					:disabled="!canBuyAdvancedMo">{{`真诚膜拜${advancedMoLevel>0?' Lv.'+pn(advancedMoLevel):''} [${pn(advancedMoCost)}次膜拜]`}}</button>
