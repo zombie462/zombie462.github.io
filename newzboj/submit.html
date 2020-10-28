@@ -9,25 +9,25 @@
 		}
 	</style>
 	<head>
-		<meta charset="GB18030" />
+		<meta charset="UTF-8" />
 		<title>Submit Page</title>
 	</head>
 	<body>
 		<div class="center">
 			<div id="left"> 
 				<form id="form1">	
-					ÌâºÅ<br><input type="text" name="pname"><br> 
-					´ğ°¸<br><input type="text" name="answer"><br>
-					ÓÃ»§Ãû<br><input type="text" name="username"><br>
-					<br><button name="submitAns" value="Ìá½»" type="button" onclick="submitAnswer()">Ìá½»´ğ°¸</button>
+					é¢˜å·<br><input type="text" name="pname"><br> 
+					ç­”æ¡ˆ<br><input type="text" name="answer"><br>
+					ç”¨æˆ·å<br><input type="text" name="username"><br>
+					<br><button name="submitAns" value="æäº¤" type="button" onclick="submitAnswer()">æäº¤ç­”æ¡ˆ</button>
 				</form>	
 				<br><br>			
 				<form id="form2" action="https://formspree.io/f/xoqpdggv" method="POST">
-				  ÔÚÄãÌá½»ÕıÈ·µÄ´ğ°¸ºóÆôÓÃ<br> 
+				  åœ¨ä½ æäº¤æ­£ç¡®çš„ç­”æ¡ˆåå¯ç”¨<br> 
 				  <input type="text" name="_pname" readonly="readonly" hidden="hidden">
 				  <input type="text" name="_answer" readonly="readonly" hidden="hidden">
 				  <input type="text" name="_username" readonly="readonly" hidden="hidden">
-				  <br><input type="submit" name="_send" value="·¢ËÍ±íµ¥" disabled="disabled"> ²»ÒªÖØ¸´·¢ËÍ 
+				  <br><input type="submit" name="_send" value="å‘é€è¡¨å•" disabled="disabled"> ä¸è¦é‡å¤å‘é€ 
 				</form>
 			</div>
 		</div>
@@ -43,15 +43,15 @@
     			var form1=document.getElementById('form1');
     			if (form1.pname.value=="1001"){
     				if (form1.answer.value=="1017505170"){
-						alert("´ğ°¸ÕıÈ·");
+						alert("ç­”æ¡ˆæ­£ç¡®");
 						okAnswer();
-					}else alert("´ğ°¸´íÎó");
+					}else alert("ç­”æ¡ˆé”™è¯¯");
     			}else if (form1.pname.value=="1002"){
     				if (form1.answer.value=="396771331"){
-						alert("´ğ°¸ÕıÈ·");
+						alert("ç­”æ¡ˆæ­£ç¡®");
 						okAnswer();
-					}else alert("´ğ°¸´íÎó");
-    			}else alert("²»´æÔÚ´ËÌâ");
+					}else alert("ç­”æ¡ˆé”™è¯¯");
+    			}else alert("ä¸å­˜åœ¨æ­¤é¢˜");
 			}
 			function getRequest(key){
 			    var url=location.search;  
