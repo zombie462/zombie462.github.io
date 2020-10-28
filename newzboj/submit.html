@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<style type="text/css">
+		#left {
+		    width: 100%;
+		    float: left;
+		    padding: 0 40px;
+		    height: auto;
+		}
+	</style>
+	<head>
+		<meta charset="GB18030" />
+		<title>Submit Page</title>
+	</head>
+	<body>
+		<div class="center">
+			<div id="left"> 
+				<form id="form1">	
+					题号<br><input type="text" name="pname"><br> 
+					答案<br><input type="text" name="answer"><br>
+					用户名<br><input type="text" name="username"><br>
+					<br><button name="submitAns" value="提交" type="button" onclick="submitAnswer()">提交答案</button>
+				</form>	
+				<br><br>			
+				<form id="form2" action="https://formspree.io/f/xoqpdggv" method="POST">
+				  在你提交正确的答案后启用<br> 
+				  <input type="text" name="_pname" readonly="readonly" hidden="hidden">
+				  <input type="text" name="_answer" readonly="readonly" hidden="hidden">
+				  <input type="text" name="_username" readonly="readonly" hidden="hidden">
+				  <br><input type="submit" name="_send" value="发送表单" disabled="disabled"> 不要重复发送 
+				</form>
+			</div>
+		</div>
+		<script>
+			function submitAnswer(){
+    			var form1=document.getElementById('form1');
+    			var form2=document.getElementById('form2');
+    			if (form1.pname.value=="1000"){
+    				if (form1.answer.value=="1017505170"){
+						alert("答案正确");
+						form2._pname.value=form1.pname.value;
+						form2._answer.value=form1.answer.value;
+						form2._username.value=form1.username.value;
+						form2._send.removeAttribute("disabled");
+					}
+    				else alert("答案错误");
+    			}else alert("不存在此题");
+			}
+		</script>
+	</body>
+</html>
