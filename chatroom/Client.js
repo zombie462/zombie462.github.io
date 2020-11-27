@@ -6,7 +6,7 @@ if (!window.WebSocket){
     Write(`Fucking Error: No Websocket support.\n`,{'color':"#e7483f"});
 }
 function Initalize(){
-    ws=new WebSocket(`wss://${User.host}:${User.port}`);
+    ws=new WebSocket(`ws://${User.host}:${User.port}`);
     Commands.cls.fun();
     ws.onopen=()=>{
         ws.send(JSON.stringify({
@@ -100,7 +100,7 @@ function Send(msg){
 }
 window.onload=()=>{
     Write(`Host IP : \n<i class="fa fa-spinner fa-spin" style="width:20px"></i> Public Room: 49.234.17.22:8080 <span style='color:grey;'>·Pending</span>\n`);
-    let Ping=new WebSocket('wss://49.234.17.22:8080');
+    let Ping=new WebSocket('ws://49.234.17.22:8080');
     Ping.onerror=()=>{
         if(S_Interface===true){
             output.empty();
