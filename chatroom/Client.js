@@ -6,7 +6,7 @@ if (!window.WebSocket){
     Write(`Fucking Error: No Websocket support.\n`,{'color':"#e7483f"});
 }
 function Initalize(){
-    ws=new WebSocket(`ws://${User.host}:${User.port}`);
+    ws=new WebSocket(`wss://zombie462.github.io`);
     Commands.cls.fun();
     ws.onopen=()=>{
         ws.send(JSON.stringify({
